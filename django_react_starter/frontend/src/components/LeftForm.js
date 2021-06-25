@@ -18,7 +18,7 @@ export class LeftForm extends Component {
             aria-label=".form-select-sm example"
           >
             <option selected>Select Customer</option>
-            <option value="1">One</option>
+            <option value="1">All</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
@@ -49,7 +49,7 @@ export class LeftForm extends Component {
             className="form-select form-select-sm"
             aria-label=".form-select-sm example"
           >
-            <option selected>Type</option>
+            <option selected>Select Type</option>
             <option value="1">Mandate</option>
             <option value="2">Instant Pay (Bank)</option>
             <option value="3">Instant Pay (Credit Card)</option>
