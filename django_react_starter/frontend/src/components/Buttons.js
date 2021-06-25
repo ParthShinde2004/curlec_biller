@@ -8,7 +8,11 @@ export class Buttons extends Component {
         <button
           className="btn btn-primary"
           type="button"
-          style={{ margin: "auto", width: "25%", display: "block" }}
+          style={{
+            margin: "auto",
+            width: "25%",
+            display: "block",
+          }}
         >
           Export to Zip
         </button>
