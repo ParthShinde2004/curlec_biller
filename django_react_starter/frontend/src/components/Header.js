@@ -5,7 +5,7 @@ export class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="#" style={{ size: "500px" }}>
             <img
               src="https://businessfinder.ctoscredit.com.my/wp-content/uploads/job-manager-uploads/company_avatar/2020/09/Curlec-Logo-150x150.png"
               alt=""

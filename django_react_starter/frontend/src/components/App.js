@@ -9,9 +9,15 @@ const App = () => {
   return (
     <div>
       <Header />
-      <LeftForm />
-      <RightForm />
-      <Buttons />
+      <div style={{ float: "left", width: 500, padding: 40, border: "black" }}>
+        <LeftForm />
+      </div>
+      <div style={{ float: "right", width: 500, padding: 40 }}>
+        <RightForm />
+      </div>
+      <div style={{ float: "middle" }}>
+        <Buttons />
+      </div>
     </div>
   );
 };
