@@ -1,5 +1,4 @@
 import React from 'react';
-import Settings from './Settings';
 
 import {
   BrowserRouter as Router,
