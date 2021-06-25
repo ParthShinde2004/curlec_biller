@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./styles.css";
 
 export class Buttons extends Component {
   render() {
@@ -7,28 +8,28 @@ export class Buttons extends Component {
         <button
           className="btn btn-primary"
           type="button"
-          style={{ margin: "2px" }}
+          style={{ margin: "auto", width: "25%", display: "block" }}
         >
           Export to Zip
         </button>
         <button
           className="btn btn-primary"
           type="button"
-          style={{ margin: "2px" }}
+          style={{ margin: "auto", width: "25%", display: "block" }}
         >
           Export to Excel
         </button>
         <button
           className="btn btn-primary"
           type="button"
-          style={{ margin: "2px" }}
+          style={{ margin: "auto", width: "25%", display: "block" }}
         >
           List of Live Merchants
         </button>
         <button
           className="btn btn-primary"
           type="button"
-          style={{ margin: "2px" }}
+          style={{ margin: "auto", width: "25%", display: "block" }}
         >
           List of Non-Live Merchants
         </button>

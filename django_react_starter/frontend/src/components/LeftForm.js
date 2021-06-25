@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./styles.css";
 
 export class LeftForm extends Component {
   state = {
@@ -12,7 +13,7 @@ export class LeftForm extends Component {
     const { customer, todate, fromdate, typepayment } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
-        <a>Customer</a>
+        <label>Customer</label>
         <form onSubmit={this.onSubmit}>
           <select
             className="form-select form-select-sm"
