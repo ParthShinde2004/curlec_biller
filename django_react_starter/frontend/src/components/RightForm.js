@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class LeftForm extends Component {
+export class RightForm extends Component {
   state = {
     customer: "",
     todate: "",
@@ -12,18 +12,7 @@ export class LeftForm extends Component {
     const { customer, todate, fromdate, typepayment } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
-        <a>Customer</a>
         <form onSubmit={this.onSubmit}>
-          <select
-            className="form-select form-select-sm"
-            aria-label=".form-select-sm example"
-          >
-            <option selected>Select Customer</option>
-            <option value="1">All</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-
           <div className="form-group">
             <label>From</label>
             <input
@@ -45,22 +34,18 @@ export class LeftForm extends Component {
               value={this.state.date}
             />
           </div>
-          <a>Type</a>
+          <a>Is Live</a>
           <select
             className="form-select form-select-sm"
             aria-label=".form-select-sm example"
           >
-            <option selected>Select Type</option>
-            <option value="1">Mandate</option>
-            <option value="2">Instant Pay (Bank)</option>
-            <option value="3">Instant Pay (Credit Card)</option>
-            <option value="4">Successful Pay (Bank)</option>
-            <option value="4">Successful Pay (Credit Card)</option>
+            <option selected>Yes</option>
+            <option value="1">No</option>
           </select>
           <a></a>
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
-              Get Mailing List
+              Generate Invoice
             </button>
           </div>
         </form>
@@ -69,10 +54,7 @@ export class LeftForm extends Component {
   }
 }
 
-export default LeftForm;
+export default RightForm;
 /*
 to do:
-1. resize (left 1/3 of the screen) the menu 
-2. space out each section
-3. correct the functionality of the button 
 */

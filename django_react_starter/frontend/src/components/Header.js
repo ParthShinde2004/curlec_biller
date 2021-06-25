@@ -38,7 +38,7 @@ export class Header extends Component {
   }
 }
 /*
-improvement:
+to do:
 1. make text bigger
 2. resize logo?
 3. add functionalities to settings button
