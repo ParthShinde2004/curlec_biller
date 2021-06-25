@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from "react-dom";
 import Settings from "./Settings";
 import HomePage from "./HomePage";
-
+import Header from "./Header";
 
 const App = ()=> {
   return (
     <div>
-      <HomePage /><Settings />
+      <Header />
     </div>
   );
 };
