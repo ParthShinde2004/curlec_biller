@@ -4,7 +4,7 @@ export class Buttons extends Component {
   render() {
     return (
       <div className="d-grid gap-2 col-6 mx-auto">
-        <button className="btn btn-primary" type="button">
+        <button className="btn btn-primary" type="button" size="lg">
           Export to Zip
         </button>
         <button className="btn btn-primary" type="button">
