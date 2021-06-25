@@ -7,17 +7,29 @@ export class Buttons extends Component {
         <button
           className="btn btn-primary"
           type="button"
-          style={{ margin: "10px" }}
+          style={{ margin: "2px" }}
         >
           Export to Zip
         </button>
-        <button className="btn btn-primary" type="button">
+        <button
+          className="btn btn-primary"
+          type="button"
+          style={{ margin: "2px" }}
+        >
           Export to Excel
         </button>
-        <button className="btn btn-primary" type="button">
+        <button
+          className="btn btn-primary"
+          type="button"
+          style={{ margin: "2px" }}
+        >
           List of Live Merchants
         </button>
-        <button className="btn btn-primary" type="button">
+        <button
+          className="btn btn-primary"
+          type="button"
+          style={{ margin: "2px" }}
+        >
           List of Non-Live Merchants
         </button>
       </div>
