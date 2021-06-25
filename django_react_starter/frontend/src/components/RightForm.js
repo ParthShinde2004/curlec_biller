@@ -44,7 +44,11 @@ export class RightForm extends Component {
           </select>
           <a></a>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ margin: "20px 0px" }}
+            >
               Generate Invoice
             </button>
           </div>

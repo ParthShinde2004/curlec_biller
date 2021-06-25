@@ -59,7 +59,11 @@ export class LeftForm extends Component {
           </select>
           <a></a>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary" style = {{ margin="100px" }}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ margin: "20px 0px" }}
+            >
               Get Mailing List
             </button>
           </div>
