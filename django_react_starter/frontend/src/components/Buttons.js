@@ -11,7 +11,6 @@ export class Buttons extends Component {
             width: "75%",
             display: "block",
             color: "#5f3285",
-            color: "#5f3285",
           }}
         >
           Export to Zip
