@@ -67,13 +67,24 @@ export class LeftForm extends Component {
               Get Mailing List
             </button>
           </div>
-          <div className="btn-group">
-            <button type="button" className="btn btn-primary">
+          <div className="btn-toolbar" role="toolbar">
+            <div className="btn group mr-2" role="group">
+              <button type="button" className="btn btn-outline-primary">
+                Export to Zip
+              </button>
+            </div>
+            <div className="btn group mr-2" role="group">
+              <button type="button" className="btn btn-outline-primary">
+                Export to Excel
+              </button>
+            </div>
+
+            {/* <button type="button" className="btn btn-success">
               Export to Zip
             </button>
             <button type="button" className="btn btn-success">
               Export to Excel
-            </button>
+            </button> */}
           </div>
         </form>
       </div>

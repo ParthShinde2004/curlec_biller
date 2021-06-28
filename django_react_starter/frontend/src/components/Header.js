@@ -28,11 +28,7 @@ export class Header extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <button
-              className="btn btn-outline-dark"
-              type="button"
-              style={{ color: "#5f3285" }}
-            >
+            <button className="btn btn-primary" type="button">
               Settings
             </button>
           </div>

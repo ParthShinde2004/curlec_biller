@@ -12,9 +12,9 @@ const App = () => {
       <div style={{ float: "left", width: 500, padding: 40 }}>
         <LeftForm />
       </div>
-      <div style={{ float: "left", width: 500 }}>
+      {/* <div style={{ float: "left", width: 500 }}>
         <Buttons />
-      </div>
+      </div> */}
       <div style={{ float: "middle", width: 500, padding: 40 }}>
         <RightForm />
       </div>
