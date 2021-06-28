@@ -51,6 +51,19 @@ export class RightForm extends Component {
             >
               Generate Invoice
             </button>
+
+            <div className="btn-group" role="toolbar">
+              <div className="btn-group me-2" role="group">
+                <button type="button" className="btn btn-outline-primary">
+                  List of Live Merchants
+                </button>
+              </div>
+              <div className="btn-group me-2" role="group">
+                <button type="button" className="btn btn-outline-primary">
+                  List of Non-Live Merchants
+                </button>
+              </div>
+            </div>
           </div>
         </form>
       </div>

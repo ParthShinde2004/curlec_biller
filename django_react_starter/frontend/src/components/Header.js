@@ -3,18 +3,15 @@ import React, { Component } from "react";
 export class Header extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#" style={{ size: "500px" }}>
-            <img
-              src="https://businessfinder.ctoscredit.com.my/wp-content/uploads/job-manager-uploads/company_avatar/2020/09/Curlec-Logo-150x150.png"
-              alt=""
-              height="30"
-              width="30"
-              class="d-inline-block align-text-middle"
-            ></img>
-            Curlec Billing
-          </a>
+          <img
+            src="https://curlec.com/wp-content/uploads/2021/01/CURLEC-LOGO.png"
+            alt=""
+            height="auto"
+            width="150"
+            class="d-inline-block align-text-middle"
+          ></img>
           <button
             className="navbar-toggler"
             type="button"
@@ -28,7 +25,7 @@ export class Header extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <button className="btn btn-primary" type="button">
+            <button className="btn btn-outline-info" type="button">
               Settings
             </button>
           </div>
