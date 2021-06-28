@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./styles.css";
 
 export class LeftForm extends Component {
   state = {
