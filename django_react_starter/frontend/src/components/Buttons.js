@@ -15,13 +15,19 @@ export class Buttons extends Component {
         >
           Export to Zip
         </button>
+
         <button
           className="btn btn-primary"
           type="button"
-          style={{ margin: "auto", width: "25%", display: "block" }}
+          style={{
+            margin: "auto",
+            width: "25%",
+            display: "block",
+          }}
         >
           Export to Excel
         </button>
+
         <button
           className="btn btn-primary"
           type="button"
@@ -29,6 +35,7 @@ export class Buttons extends Component {
         >
           List of Live Merchants
         </button>
+
         <button
           className="btn btn-primary"
           type="button"
@@ -43,5 +50,5 @@ export class Buttons extends Component {
 export default Buttons;
 
 /*
-to do:
+to do: Change colour of buttons
 */
