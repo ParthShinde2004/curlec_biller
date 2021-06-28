@@ -3,14 +3,15 @@ import React, { Component } from "react";
 export class Buttons extends Component {
   render() {
     return (
-      <div className="d-grid gap-2 col-6 mx-auto">
+      <div className="btn-group-vertical">
         <button
-          className="btn btn-primary"
+          className="btn btn-outline-dark"
           type="button"
           style={{
-            margin: "auto",
-            width: "25%",
+            width: "75%",
             display: "block",
+            color: "#5f3285",
+            color: "#5f3285",
           }}
         >
           Export to Zip
@@ -20,8 +21,7 @@ export class Buttons extends Component {
           className="btn btn-primary"
           type="button"
           style={{
-            margin: "auto",
-            width: "25%",
+            width: "75%",
             display: "block",
           }}
         >
@@ -31,7 +31,10 @@ export class Buttons extends Component {
         <button
           className="btn btn-primary"
           type="button"
-          style={{ margin: "auto", width: "25%", display: "block" }}
+          style={{
+            width: "75%",
+            display: "block",
+          }}
         >
           List of Live Merchants
         </button>
@@ -39,7 +42,10 @@ export class Buttons extends Component {
         <button
           className="btn btn-primary"
           type="button"
-          style={{ margin: "auto", width: "25%", display: "block" }}
+          style={{
+            width: "75%",
+            display: "block",
+          }}
         >
           List of Non-Live Merchants
         </button>
