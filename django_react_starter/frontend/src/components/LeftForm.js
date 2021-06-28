@@ -11,10 +11,7 @@ export class LeftForm extends Component {
   render() {
     const { customer, todate, fromdate, typepayment } = this.state;
     return (
-      <div
-        className="card card-body mt-4 mb-4"
-        style={{ margin: "0px 0px 20px" }}
-      >
+      <div className="card card-body mt-4 mb-4">
         <label>Customer</label>
         <form onSubmit={this.onSubmit}>
           <select
