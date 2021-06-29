@@ -10,7 +10,7 @@ export class Header extends Component {
             alt=""
             height="auto"
             width="150"
-            class="d-inline-block align-text-middle"
+            className="d-inline-block align-text-middle"
           ></img>
           <button
             className="navbar-toggler"
