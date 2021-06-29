@@ -2,14 +2,13 @@ import React, { Component } from "react";
 
 export class RightForm extends Component {
   state = {
-    customer: "",
-    todate: "",
-    fromdate: "",
-    typepayment: "",
+    fromdateright: "",
+    todateright: "",
+    islive: "",
   };
 
   render() {
-    const { customer, todate, fromdate, typepayment } = this.state;
+    const { fromdateright, todateright, islive } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
         <form onSubmit={this.onSubmit}>
