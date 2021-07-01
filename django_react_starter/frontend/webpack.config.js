@@ -13,8 +13,8 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
+          // loader: "css-loader", #removed (30/6/21) cos of issues
           loader: "babel-loader",
-          loader: "css-loader",
         },
       },
     ],

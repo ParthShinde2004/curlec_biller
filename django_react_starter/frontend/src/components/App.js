@@ -1,22 +1,42 @@
 import React from "react";
 import { render } from "react-dom";
 import Header from "./Header";
-import LeftForm from "./LeftForm";
-import RightForm from "./RightForm";
+import MailingListForm from "./MailingListForm";
+import InvoiceForm from "./InvoiceForm";
 import ResultsTable from "./ResultsTable";
 
 const App = () => {
   return (
     <div>
       <Header />
-      <div style={{ float: "left", width: 500, padding: 40 }}>
-        <LeftForm />
-      </div>
-      <div style={{ float: "right" }}>
-        <ResultsTable />
-      </div>
-      <div style={{ float: "middle", width: 500, padding: 40 }}>
-        <RightForm />
+      <div className="grid-container">
+        <div
+          className="grid-item grid-item-1"
+          style={{
+            width: 500,
+            padding: 20,
+          }}
+        >
+          <MailingListForm />
+        </div>
+        <div
+          className="grid-id-table"
+          style={{
+            padding: 10,
+          }}
+        >
+          <ResultsTable />
+        </div>
+        <div
+          id="Invoice_Form"
+          className="grid-item grid-item-3"
+          style={{
+            width: 500,
+            padding: 20,
+          }}
+        >
+          <InvoiceForm />
+        </div>
       </div>
     </div>
   );

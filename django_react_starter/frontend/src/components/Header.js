@@ -1,33 +1,42 @@
 import React, { Component } from "react";
+import { PopUp } from "./PopUp";
 
 export class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { addPopUpShow: false };
+  }
+
   render() {
+    let addPopUpShow = () => this.setState({ addPopUpShow: false });
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container-fluid">
           <img
-            src="https://curlec.com/wp-content/uploads/2021/01/CURLEC-LOGO.png"
+            src="https://cdn.discordapp.com/attachments/775331190093119523/859655405343735808/curlec_new_logo_new_8.png"
             alt=""
             height="auto"
-            width="150"
+            width="250"
             className="d-inline-block align-text-middle"
+            // style={{
+            //   margin: 10,
+            // }}
           ></img>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+          <div
+            className="popup-box"
+            id="navbarSupportedContent"
+            style={{ margin: "right" }}
           >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <button className="btn btn-outline-info" type="button">
+            <button
+              className="btn btn-outline-info"
+              type="button"
+              onClick={() => this.setState({ addPopUpShow: true })}
+            >
               Settings
             </button>
+            <PopUp show={this.state.addPopUpShow} onHide={addPopUpShow} />
           </div>
         </div>
       </nav>
@@ -36,9 +45,9 @@ export class Header extends Component {
 }
 /*
 to do:
-1. make text bigger
-2. resize logo?
-3. add functionalities to settings button
+1. make text bigger [DONE]
+2. resize logo? [DONE]
+3. add functionalities to settings button [in progress...]
 4. change background colour of navbar
 */
 export default Header;
