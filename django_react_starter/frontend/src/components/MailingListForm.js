@@ -5,21 +5,29 @@ export class MailingListForm extends Component {
     disabled: false,
   };
 
-  handleChange = (e) => {
-    if (e.target.value !== "All" && e.target.value === "Mandate") {
+  handleChange = (e, f) => {
+    if (e.target.value !== "All" || f.target.value === "Mandate") {
       this.setState({
         disabled: true,
       });
-      // } else if (e.target.value === "All" && e.target.value === "Mandate") {
-      //   this.setState({
-      //     disabled: true,
-      //   });
     } else {
       this.setState({
         disabled: false,
       });
     }
   };
+
+  // handleChange2 = (f) => {
+  //   if (f.target.value === "Mandate") {
+  //     this.setState({
+  //       disabled: true,
+  //     });
+  //   } else {
+  //     this.setState({
+  //       disabled: false,
+  //     });
+  //   }
+  // };
 
   render() {
     return (
@@ -95,6 +103,7 @@ export class MailingListForm extends Component {
     );
   }
 }
+
 export default MailingListForm;
 /*
 to do:
