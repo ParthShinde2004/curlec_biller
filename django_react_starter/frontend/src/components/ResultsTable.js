@@ -3,7 +3,8 @@ import React, { Component } from "react";
 export class ResultsTable extends Component {
   render() {
     return (
-      <div className="table-responsive" id="maintable">
+      // {{ var == "Mandate" &&
+      <div className="table-responsive">
         <table className="table" align="right">
           <thead>
             <tr>
@@ -56,4 +57,3 @@ export class ResultsTable extends Component {
 }
 
 export default ResultsTable;
-// export { handleChange };

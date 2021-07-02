@@ -6,6 +6,7 @@ import InvoiceForm from "./InvoiceForm";
 import ResultsTable from "./ResultsTable";
 
 const App = () => {
+  // console.log(this.paymentType);
   return (
     <div>
       <Header />

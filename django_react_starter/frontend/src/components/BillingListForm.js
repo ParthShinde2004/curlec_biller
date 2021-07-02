@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { handleChange } from "./ResultsTable";
 
 export class BillingListForm extends Component {
   state = {
@@ -32,16 +31,6 @@ export class BillingListForm extends Component {
   };
 
   render() {
-    var { title, children } = this.props;
-    const { opened } = this.state;
-
-    if (opened) {
-      title = "Hide Table";
-    } else {
-      title = "Show Table";
-    }
-
-    let addResultsShow = () => this.setState({ addResultsShow: false });
     return (
       <div className="card card-body mt-4 mb-4">
         <label>Customer</label>
@@ -72,6 +61,7 @@ export class BillingListForm extends Component {
             className="form-control"
             aria-label=".form-select-sm example"
             onChange={this.handle_paymentChange}
+            id="test123"
           >
             <option defaultValue>Select Type</option>
             <option value="Mandate">Mandate</option>
@@ -84,18 +74,16 @@ export class BillingListForm extends Component {
               Successful Pay (Credit Card)
             </option>
           </select>
-          <a></a>
           <div className="d-grid">
             <button
               type="submit"
               className="btn btn-primary btn-block"
               style={{ margin: "10px 0px" }}
-              // onClick={this.showtable}
             >
               Get Billing List
             </button>
           </div>
-          {opened && <div>{children}</div>}
+
           <div className="btn-group d-md-flex mx-auto" role="toolbar">
             <button
               type="button"
