@@ -2,21 +2,6 @@ import React, { Component } from "react";
 // import { handleChange } from "./ResultsTable";
 
 export class BillingListForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      opened: false,
-    };
-    this.showtable = this.showtable.bind(this);
-  }
-
-  showtable() {
-    const { opened } = this.state;
-    this.setState({
-      opened: !opened,
-    });
-  }
-
   state = {
     disabled: false,
     disabled2: false,
@@ -105,7 +90,7 @@ export class BillingListForm extends Component {
               type="submit"
               className="btn btn-primary btn-block"
               style={{ margin: "10px 0px" }}
-              onClick={this.showtable}
+              // onClick={this.showtable}
             >
               Get Billing List
             </button>
