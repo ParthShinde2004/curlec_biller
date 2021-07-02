@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import Header from "./Header";
-import MailingListForm from "./MailingListForm";
+import BillingListForm from "./BillingListForm";
 import InvoiceForm from "./InvoiceForm";
 import ResultsTable from "./ResultsTable";
 
@@ -17,7 +17,7 @@ const App = () => {
             padding: 20,
           }}
         >
-          <MailingListForm />
+          <BillingListForm />
         </div>
         <div
           className="grid-id-table"

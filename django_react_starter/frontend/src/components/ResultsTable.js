@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class ResultsTable extends Component {
   render() {
     return (
-      <div className="table-responsive">
+      <div className="table-responsive" id="maintable">
         <table className="table" align="right">
           <thead>
             <tr>
@@ -20,7 +20,7 @@ export class ResultsTable extends Component {
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Company 1</td>
+              <td>Customer 1</td>
               <td>0000</td>
               <td>random date</td>
               <td>0000</td>
@@ -56,3 +56,4 @@ export class ResultsTable extends Component {
 }
 
 export default ResultsTable;
+// export { handleChange };

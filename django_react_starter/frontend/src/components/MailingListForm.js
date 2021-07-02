@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+// import { handleChange } from "./ResultsTable";
 
-export class MailingListForm extends Component {
+export class BillingListForm extends Component {
   state = {
     disabled: false,
+    disabled2: false,
   };
 
-  handleChange = (e, f) => {
-    if (e.target.value !== "All" || f.target.value === "Mandate") {
+  handle_customerChange = (e) => {
+    if (e.target.value !== "All") {
       this.setState({
         disabled: true,
       });
@@ -17,19 +19,20 @@ export class MailingListForm extends Component {
     }
   };
 
-  // handleChange2 = (f) => {
-  //   if (f.target.value === "Mandate") {
-  //     this.setState({
-  //       disabled: true,
-  //     });
-  //   } else {
-  //     this.setState({
-  //       disabled: false,
-  //     });
-  //   }
-  // };
+  handle_paymentChange = (f) => {
+    if (f.target.value === "Mandate") {
+      this.setState({
+        disabled2: true,
+      });
+    } else {
+      this.setState({
+        disabled2: false,
+      });
+    }
+  };
 
   render() {
+    let addResultsShow = () => this.setState({ addResultsShow: false });
     return (
       <div className="card card-body mt-4 mb-4">
         <label>Customer</label>
@@ -37,7 +40,8 @@ export class MailingListForm extends Component {
           <select
             className="form-control"
             aria-label=".form-select-sm example"
-            onChange={this.handleChange}
+            onChange={this.handle_customerChange}
+            // required
           >
             <option defaultValue>Select Customer</option>
             <option value="All">All</option>
@@ -58,7 +62,7 @@ export class MailingListForm extends Component {
           <select
             className="form-control"
             aria-label=".form-select-sm example"
-            onChange={this.handleChange}
+            onChange={this.handle_paymentChange}
           >
             <option defaultValue>Select Type</option>
             <option value="Mandate">Mandate</option>
@@ -77,8 +81,9 @@ export class MailingListForm extends Component {
               type="submit"
               className="btn btn-primary btn-block"
               style={{ margin: "10px 0px" }}
+              // onClick={handleChange()}
             >
-              Get Mailing List
+              Get Billing List
             </button>
           </div>
           <div className="btn-group d-md-flex mx-auto" role="toolbar">
@@ -86,7 +91,7 @@ export class MailingListForm extends Component {
               type="button"
               className="btn btn-outline-primary mr-2"
               style={{ minWidth: "205.5px" }}
-              disabled={this.state.disabled}
+              disabled={this.state.disabled || this.state.disabled2}
             >
               Export to Zip
             </button>
@@ -104,10 +109,4 @@ export class MailingListForm extends Component {
   }
 }
 
-export default MailingListForm;
-/*
-to do:
-1. resize (left 1/3 of the screen) the menu 
-2. space out each section
-3. correct the functionality of the button 
-*/
+export default BillingListForm;
