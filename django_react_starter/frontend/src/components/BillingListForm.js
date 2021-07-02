@@ -4,6 +4,7 @@ export class BillingListForm extends Component {
   state = {
     disabled: false,
     disabled2: false,
+    buttonactivated: false,
   };
 
   handle_customerChange = (e) => {
@@ -19,6 +20,8 @@ export class BillingListForm extends Component {
   };
 
   handle_paymentChange = (f) => {
+    this.props.setButton("inactive");
+    this.props.setType(f.target.value);
     if (f.target.value === "Mandate") {
       this.setState({
         disabled2: true,
@@ -28,6 +31,11 @@ export class BillingListForm extends Component {
         disabled2: false,
       });
     }
+  };
+
+  buttonfunc = () => {
+    this.props.setButton("active");
+    console.log("hello", this.state.buttonactivated);
   };
 
   render() {
@@ -61,24 +69,20 @@ export class BillingListForm extends Component {
             className="form-control"
             aria-label=".form-select-sm example"
             onChange={this.handle_paymentChange}
-            id="test123"
           >
             <option defaultValue>Select Type</option>
             <option value="Mandate">Mandate</option>
             <option value="Instant Pay (Bank)">Instant Pay (Bank)</option>
-            <option value="Instant Pay (Credit Card)">
-              Instant Pay (Credit Card)
-            </option>
+            <option value="Instant Pay (Card)">Instant Pay (Card)</option>
             <option value="Successful Pay (Bank)">Successful Pay (Bank)</option>
-            <option value="Successful Pay (Credit Card)">
-              Successful Pay (Credit Card)
-            </option>
+            <option value="Successful Pay (Card)">Successful Pay (Card)</option>
           </select>
           <div className="d-grid">
             <button
-              type="submit"
+              type="button"
               className="btn btn-primary btn-block"
               style={{ margin: "10px 0px" }}
+              onClick={this.buttonfunc}
             >
               Get Billing List
             </button>

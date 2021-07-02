@@ -1,47 +1,77 @@
-import React from "react";
+import React, { Component } from "react";
 import { render } from "react-dom";
 import Header from "./Header";
 import BillingListForm from "./BillingListForm";
 import InvoiceForm from "./InvoiceForm";
 import ResultsTable from "./ResultsTable";
 
-const App = () => {
-  // console.log(this.paymentType);
-  return (
-    <div>
-      <Header />
-      <div className="grid-container">
-        <div
-          className="grid-item grid-item-1"
-          style={{
-            width: 500,
-            padding: 20,
-          }}
-        >
-          <BillingListForm />
-        </div>
-        <div
-          className="grid-id-table"
-          style={{
-            padding: 10,
-          }}
-        >
-          <ResultsTable />
-        </div>
-        <div
-          id="Invoice_Form"
-          className="grid-item grid-item-3"
-          style={{
-            width: 500,
-            padding: 20,
-          }}
-        >
-          <InvoiceForm />
+export default class App extends Component {
+  state = {
+    transactionType: "",
+    buttonStatus: "",
+  };
+
+  constructor(props) {
+    super(props);
+    this.setType = this.setType.bind(this);
+    this.setButton = this.setButton.bind(this);
+  }
+
+  setType(userinput) {
+    this.setState({
+      transactionType: userinput,
+    });
+  }
+
+  setButton(status) {
+    this.setState({
+      buttonStatus: status,
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <div className="grid-container">
+          <div
+            className="grid-item grid-item-1"
+            style={{
+              width: 500,
+              padding: 20,
+            }}
+          >
+            <BillingListForm
+              setType={this.setType}
+              setButton={this.setButton}
+            />
+          </div>
+          <div
+            className="grid-id-table"
+            style={{
+              padding: 10,
+            }}
+          >
+            <ResultsTable
+              transactionType={this.state.transactionType}
+              buttonStatus={this.state.buttonStatus}
+            />
+          </div>
+          <div
+            id="Invoice_Form"
+            className="grid-item grid-item-3"
+            style={{
+              width: 500,
+              padding: 20,
+            }}
+          >
+            <InvoiceForm />
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const appDiv = document.getElementById("app");
 render(<App />, appDiv);

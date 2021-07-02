@@ -1,37 +1,18 @@
 import React, { Component } from "react";
 
 export class InvoiceForm extends Component {
-  state = {
-    fromdateright: "",
-    todateright: "",
-    islive: "",
-  };
-
   render() {
-    const { fromdateright, todateright, islive } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label>From</label>
-            <input
-              className="form-control"
-              type="date"
-              name="name"
-              onChange={this.onChange}
-              value={this.state.date}
-            />
+            <input className="form-control" type="date" name="name" />
           </div>
 
           <div className="form-group">
             <label>To</label>
-            <input
-              className="form-control"
-              type="date"
-              name="name"
-              onChange={this.onChange}
-              value={this.state.date}
-            />
+            <input className="form-control" type="date" name="name" />
           </div>
           <label>Is Live</label>
           <select className="form-control" aria-label=".form-select-sm example">
