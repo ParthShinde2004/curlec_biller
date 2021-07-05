@@ -238,32 +238,33 @@ from django.db import models
 #         managed = False
 #         db_table = 'batch_upload_job'
 
-# # veryimportant
+
 class CalculationRule(models.Model):
     merchant_id = models.IntegerField(primary_key=True)
-    company_name = models.CharField(
-        max_length=50, blank=True, null=True)
-    calculation_rule_creditcard = models.CharField(
-        max_length=50, blank=True, null=True)
-    calculation_rule_casa = models.CharField(
-        max_length=50, blank=True, null=True)
+    company_name = models.CharField(max_length=50, blank=True, null=True)
+    calculation_rule_creditcard = models.CharField(max_length=50, blank=True, null=True)
+    calculation_rule_casa = models.CharField(max_length=50, blank=True, null=True)
     calculation_rule_instant_pay = models.CharField(
-        max_length=50, blank=True, null=True)
-    calculation_rule_setup_fees = models.CharField(
-        max_length=50, blank=True, null=True)
+        max_length=50, blank=True, null=True
+    )
+    calculation_rule_setup_fees = models.CharField(max_length=50, blank=True, null=True)
     is_live = models.BooleanField()
     calculation_rule_minimum_fee = models.CharField(
-        max_length=50, blank=True, null=True)
+        max_length=50, blank=True, null=True
+    )
     calculation_rule_credit_card_fee = models.CharField(
-        max_length=50, blank=True, null=True)
+        max_length=50, blank=True, null=True
+    )
     calculation_rule_mandate_fee = models.CharField(
-        max_length=250, blank=True, null=True)
+        max_length=250, blank=True, null=True
+    )
     calculation_rule_cc_discount = models.CharField(
-        max_length=10, blank=True, null=True)
+        max_length=10, blank=True, null=True
+    )
 
     class Meta:
         managed = False
-        db_table = 'calculation_rule'
+        db_table = "calculation_rule"
 
 
 # class Classification(models.Model):

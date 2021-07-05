@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
+import CalcData from "./calcdata.json";
 
 export class PopUp extends Component {
   constructor(props) {
@@ -7,6 +8,11 @@ export class PopUp extends Component {
   }
 
   render() {
+    // console.log(JSON.stringify(CalcData));
+    for (let i = 0; i < 5; i++) {
+      console.log(CalcData["data"][i]["company_name"]);
+    }
+    console.log(CalcData["data"].length);
     return (
       <Modal
         {...this.props}
@@ -39,10 +45,14 @@ export class PopUp extends Component {
           </select>
           <h6>Calculation Rule - Credit Card:</h6>
           <div className="input-group">
-            <textarea
+            {/* <textarea
               className="form-control"
               aria-label="With textarea"
-            ></textarea>
+            ></textarea> */}
+            {/* <h4>test123</h4>
+            {CalculationData.map((test123, index) => {
+              return <h5>{test123.company_name}</h5>;
+            })} */}
           </div>
           <h6>Calculation Rule - CASA:</h6>
           <div className="input-group">

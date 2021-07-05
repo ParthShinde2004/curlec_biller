@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'frontend',
+    'corsheaders',  # new line
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # new line
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -52,6 +54,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_react_starter.urls'
+CORS_ALLOW_ALL_ORIGINS = True  # new line
 
 TEMPLATES = [
     {
