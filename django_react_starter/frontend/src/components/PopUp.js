@@ -20,20 +20,20 @@ export class PopUp extends Component {
           </Modal.Title>
           <button
             type="button"
-            class="close"
+            className="close"
             data-dismiss="modal"
             onClick={this.props.onHide}
           >
-            <span aria-hidden="true" class="modal_button">
+            <span aria-hidden="true" className="modal_button">
               &times;
             </span>
-            <span class="sr-only">Close</span>
+            <span className="sr-only">Close</span>
           </button>
         </Modal.Header>
         <Modal.Body>
           <h6>Customer</h6>
           <select className="form-control" aria-label=".form-select-sm example">
-            <option selected>Select Customer</option>
+            <option defaultValue>Select Customer</option>
             <option value="1">One</option>
             <option value="2">Two</option>
           </select>
@@ -95,7 +95,7 @@ export class PopUp extends Component {
           </div>
           <h6>Is Live</h6>
           <select className="form-control" aria-label=".form-select-sm example">
-            <option selected>Yes</option>
+            <option defaultValue>Yes</option>
             <option value="1">No</option>
           </select>
         </Modal.Body>
