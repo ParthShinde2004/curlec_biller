@@ -35,7 +35,6 @@ export class BillingListForm extends Component {
 
   buttonfunc = () => {
     this.props.setButton("active");
-    console.log("hello", this.state.buttonactivated);
   };
 
   render() {
