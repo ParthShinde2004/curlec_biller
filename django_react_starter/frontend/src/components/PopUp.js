@@ -1,19 +1,36 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
-import CalcData from "./calcdata.json";
 
 export class PopUp extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      companies: [],
+    };
+  }
+
+  state = {
+    loading: true,
+    companies: null,
+  };
+
+  async componentDidMount() {
+    const url = "http://127.0.0.1:8000/api/showcalculations";
+    const response = await fetch(url);
+    const data = await response.json();
+    // this.setState({ companies: data.data.company_name, loading: false });
+    this.setState({ companies: data.Map(d)})
+    console.log(data.data);
   }
 
   render() {
     // console.log(JSON.stringify(CalcData));
-    for (let i = 0; i < 5; i++) {
-      console.log(CalcData["data"][i]["company_name"]);
-    }
-    console.log(CalcData["data"].length);
+    // for (let i = 0; i < 5; i++) {
+    //   console.log(CalcData["data"][i]["company_name"]);
+    // }
+    // console.log(CalcData["data"].length);
     return (
+      console.log(this.state.companies)
       <Modal
         {...this.props}
         size="lg"
@@ -43,16 +60,16 @@ export class PopUp extends Component {
             <option value="1">One</option>
             <option value="2">Two</option>
           </select>
+
           <h6>Calculation Rule - Credit Card:</h6>
           <div className="input-group">
-            {/* <textarea
-              className="form-control"
-              aria-label="With textarea"
-            ></textarea> */}
-            {/* <h4>test123</h4>
-            {CalculationData.map((test123, index) => {
-              return <h5>{test123.company_name}</h5>;
-            })} */}
+            {this.state.loading || !this.state.companies ? (
+              <div>loading...</div>
+            ) : (
+              <div>
+                <div>{this.state.companies}</div>
+              </div>
+            )}
           </div>
           <h6>Calculation Rule - CASA:</h6>
           <div className="input-group">
