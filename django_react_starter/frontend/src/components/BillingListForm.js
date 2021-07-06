@@ -46,7 +46,6 @@ export class BillingListForm extends Component {
             className="form-control"
             aria-label=".form-select-sm example"
             onChange={this.handle_customerChange}
-            // required
           >
             <option defaultValue>Select Customer</option>
             <option value="All">All</option>

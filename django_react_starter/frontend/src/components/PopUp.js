@@ -1,48 +1,46 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
-import axios from "axios";
-import Select from "react-select";
 
 export class PopUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectOptions: [],
-      name: "",
-      id: "",
+      data1: [],
+      selectedchoice: -1,
+      // CASArule: "",
+      // instantpayrule: "",
+      // monthlydashboardfee: "",
+      // monthlycreditcardfee: "",
+      // mandatefee: "",
+      // monthlymandatefee: "",
+      // creditcarddiscount: "",
+      // islive: true,
     };
   }
 
-  // state = {
-  //   loading: true,
-  //   companies: null,
-  // };
-
-  // async componentDidMount() {
-  //   const url = "http://127.0.0.1:8000/api/showcalculations";
-  //   const response = await fetch(url);
-  //   const data = await response.json();
-  //   this.setState({ companies: data.data.company_name, loading: false });
-  // }
-  async getOptions() {
-    const res = await axios.get("http://127.0.0.1:8000/api/showcalculations");
-    const data = res.data.data;
-
-    const options = data.map((d) => ({
-      merchant_id: d.id,
-      company_name: d.name,
+  async componentDidMount() {
+    const url = "http://127.0.0.1:8000/api/showcalculations";
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState((prevState) => ({
+      data1: data.data,
+      selectedchoice: prevState.selectedchoice,
     }));
 
-    this.setState({ selectOptions: options });
+    // this.setState({ data1: data.data });
+    // console.log(data.data);
+    // console.log(data.data[0]["company_name"]);
   }
 
-  handleChange(e) {
-    this.setState({ id: e.value, name: e.label });
-  }
-
-  componentDidMount() {
-    this.getOptions();
-  }
+  onTarget = (e) => {
+    this.setState(
+      (prevState) => ({
+        data1: prevState.data1,
+        selectedchoice: e.target.value,
+      })
+      // () => console.log(this.state.data1[this.state.selectedchoice])
+    );
+  };
 
   render() {
     return (
@@ -70,73 +68,102 @@ export class PopUp extends Component {
         </Modal.Header>
         <Modal.Body>
           <h6>Customer</h6>
-          {/* <select className="form-control" aria-label=".form-select-sm example">
-            <option defaultValue>Select Customer</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-          </select> */}
-          <Select
-            options={this.state.selectOptions}
-            onChange={this.handleChange.bind(this)}
-          />
+          <select
+            className="form-control"
+            aria-label=".form-select-sm example"
+            onChange={this.onTarget}
+          >
+            <option value={-1}>Select Customer</option>
+            {this.state.data1.map((x, y) => (
+              <option value={y}>{x.company_name}</option>
+            ))}
+          </select>
           <h6>Calculation Rule - Credit Card:</h6>
           <div className="input-group">
-            {/* {this.state.loading || !this.state.companies ? (
-              <div>loading...</div>
-            ) : (
-              <div>
-                <div>{this.state.companies}</div>
-              </div>
-            )} */}
+            <a>
+              {this.state.data1 &&
+                this.state.selectedchoice != -1 &&
+                this.state.data1[this.state.selectedchoice][
+                  "calculation_rule_creditcard"
+                ]}
+            </a>
           </div>
           <h6>Calculation Rule - CASA:</h6>
           <div className="input-group">
-            <textarea
-              className="form-control"
-              aria-label="With textarea"
-            ></textarea>
+            <a>
+              {this.state.data1 &&
+                this.state.selectedchoice != -1 &&
+                this.state.data1[this.state.selectedchoice][
+                  "calculation_rule_casa"
+                ]}
+            </a>
           </div>
           <h6>Calculation Rule - Instant Pay:</h6>
           <div className="input-group">
-            <textarea
-              className="form-control"
-              aria-label="With textarea"
-            ></textarea>
+            <a>
+              {this.state.data1 &&
+                this.state.selectedchoice != -1 &&
+                this.state.data1[this.state.selectedchoice][
+                  "calculation_rule_instant_pay"
+                ]}
+            </a>
           </div>
           <h6>Calculation Rule - Monthly Dashboard Fee:</h6>
           <div className="input-group">
-            <textarea
-              className="form-control"
-              aria-label="With textarea"
-            ></textarea>
+            <a>
+              {this.state.data1 &&
+                this.state.selectedchoice != -1 &&
+                this.state.data1[this.state.selectedchoice][
+                  "calculation_rule_creditcard"
+                ]}
+            </a>
           </div>
           <h6>Calculation Rule - Monthly Credit Card Fee:</h6>
           <div className="input-group">
-            <textarea
-              className="form-control"
-              aria-label="With textarea"
-            ></textarea>
+            <a>
+              {this.state.data1 &&
+                this.state.selectedchoice != -1 &&
+                this.state.data1[this.state.selectedchoice][
+                  "calculation_rule_credit_card_fee"
+                ]}
+            </a>
           </div>
-          <h6>Calculation Rule - Monthly Mandate Fee:</h6>
+          <h6>Calculation Rule - Monthly Minimum Fee:</h6>
+          <div className="input-group">
+            <a>
+              {this.state.data1 &&
+                this.state.selectedchoice != -1 &&
+                this.state.data1[this.state.selectedchoice][
+                  "calculation_rule_minimum_fee"
+                ]}
+            </a>
+          </div>
+          {/* <h6>Calculation Rule - Monthly Mandate Fee:</h6>
           <div className="input-group">
             <textarea
               className="form-control"
               aria-label="With textarea"
             ></textarea>
-          </div>
+          </div> */}
           <h6>Calculation Rule - Mandate Fee:</h6>
           <div className="input-group">
-            <textarea
-              className="form-control"
-              aria-label="With textarea"
-            ></textarea>
+            <a>
+              {this.state.data1 &&
+                this.state.selectedchoice != -1 &&
+                this.state.data1[this.state.selectedchoice][
+                  "calculation_rule_mandate_fee"
+                ]}
+            </a>
           </div>
           <h6>Discount Rate - Credit Card:</h6>
           <div className="input-group">
-            <textarea
-              className="form-control"
-              aria-label="With textarea"
-            ></textarea>
+            <a>
+              {this.state.data1 &&
+                this.state.selectedchoice != -1 &&
+                this.state.data1[this.state.selectedchoice][
+                  "calculation_rule_cc_discount"
+                ]}
+            </a>
           </div>
           <h6>Is Live</h6>
           <select className="form-control" aria-label=".form-select-sm example">
