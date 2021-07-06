@@ -1,36 +1,51 @@
 import React, { Component } from "react";
 import { Modal, Button } from "react-bootstrap";
+import axios from "axios";
+import Select from "react-select";
 
 export class PopUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      companies: [],
+      selectOptions: [],
+      name: "",
+      id: "",
     };
   }
 
-  state = {
-    loading: true,
-    companies: null,
-  };
+  // state = {
+  //   loading: true,
+  //   companies: null,
+  // };
 
-  async componentDidMount() {
-    const url = "http://127.0.0.1:8000/api/showcalculations";
-    const response = await fetch(url);
-    const data = await response.json();
-    // this.setState({ companies: data.data.company_name, loading: false });
-    this.setState({ companies: data.Map(d)})
-    console.log(data.data);
+  // async componentDidMount() {
+  //   const url = "http://127.0.0.1:8000/api/showcalculations";
+  //   const response = await fetch(url);
+  //   const data = await response.json();
+  //   this.setState({ companies: data.data.company_name, loading: false });
+  // }
+  async getOptions() {
+    const res = await axios.get("http://127.0.0.1:8000/api/showcalculations");
+    const data = res.data.data;
+
+    const options = data.map((d) => ({
+      merchant_id: d.id,
+      company_name: d.name,
+    }));
+
+    this.setState({ selectOptions: options });
+  }
+
+  handleChange(e) {
+    this.setState({ id: e.value, name: e.label });
+  }
+
+  componentDidMount() {
+    this.getOptions();
   }
 
   render() {
-    // console.log(JSON.stringify(CalcData));
-    // for (let i = 0; i < 5; i++) {
-    //   console.log(CalcData["data"][i]["company_name"]);
-    // }
-    // console.log(CalcData["data"].length);
     return (
-      console.log(this.state.companies)
       <Modal
         {...this.props}
         size="lg"
@@ -55,21 +70,24 @@ export class PopUp extends Component {
         </Modal.Header>
         <Modal.Body>
           <h6>Customer</h6>
-          <select className="form-control" aria-label=".form-select-sm example">
+          {/* <select className="form-control" aria-label=".form-select-sm example">
             <option defaultValue>Select Customer</option>
             <option value="1">One</option>
             <option value="2">Two</option>
-          </select>
-
+          </select> */}
+          <Select
+            options={this.state.selectOptions}
+            onChange={this.handleChange.bind(this)}
+          />
           <h6>Calculation Rule - Credit Card:</h6>
           <div className="input-group">
-            {this.state.loading || !this.state.companies ? (
+            {/* {this.state.loading || !this.state.companies ? (
               <div>loading...</div>
             ) : (
               <div>
                 <div>{this.state.companies}</div>
               </div>
-            )}
+            )} */}
           </div>
           <h6>Calculation Rule - CASA:</h6>
           <div className="input-group">
