@@ -1,8 +1,27 @@
 import React, { Component } from "react";
 
 export class ResultsTable extends Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
+    this.getHeader = this.getHeader.bind(this);
+    this.getRowsData = this.getRowsData.bind(this);
+    this.getKeys = this.getKeys.bind(this);
+  }
+
+  getKeys = () => {
+    console.log(data.data);
+    return Object.keys(this.props.data.data[0]);
+  };
+
+  getRowsData = () => {};
+
+  getHeader = () => {
+    let keys = this.getKeys();
+    return keys.map((key, index) => {
+      return <th key={key}>{key.toUpperCase()}</th>;
+    });
+  };
+
   //   this.state = {
   //     data1: [],
   //     selectedchoice: -1,
@@ -12,10 +31,10 @@ export class ResultsTable extends Component {
     const url = "http://127.0.0.1:8000/api/showmerchants";
     const response = await fetch(url);
     const data = await response.json();
-    this.setState((prevState) => ({
-      data1: data.data,
-      selectedchoice: prevState.selectedchoice,
-    }));
+    // this.setState((prevState) => ({
+    //   data1: data.data,
+    //   selectedchoice: prevState.selectedchoice,
+    // }));
   }
 
   mandatetable = () => {
@@ -35,7 +54,13 @@ export class ResultsTable extends Component {
     if (this.props.buttonStatus === "inactive") return false;
     return (
       <div className="table-responsive">
-        {this.props.transactionType == "Mandate" && (
+        <table>
+          <thead>
+            <tr>{this.getHeader()}</tr>
+          </thead>
+          <tbody>{this.getRowsData()}</tbody>
+        </table>
+        {/* {this.props.transactionType == "Mandate" && (
           <table className="table" align="right">
             <thead>
               <tr>
@@ -48,9 +73,9 @@ export class ResultsTable extends Component {
                 <th scope="col">Value</th>
               </tr>
             </thead>
-            <tbody>
-              {/* {{ funnctionName() }} later for when we progrma the function */}
-              <tr>
+            <tbody> */}
+        {/* {{ funnctionName() }} later for when we progrma the function */}
+        {/* <tr>
                 <th scope="row">1</th>
                 <td>Company 1</td>
                 <td>0000</td>
@@ -61,7 +86,7 @@ export class ResultsTable extends Component {
               </tr>
             </tbody>
           </table>
-        )}
+        )} */}
         {this.props.transactionType == "Instant Pay (Bank)" && (
           <table className="table" align="right">
             <thead>
@@ -246,6 +271,12 @@ export class ResultsTable extends Component {
     );
   }
 }
+
+const RenderRow = (props) => {
+  return props.keys.map((key, index) => {
+    return <td key={props.data[key]}>{props.data[key]}</td>;
+  });
+};
 
 export default ResultsTable;
 
