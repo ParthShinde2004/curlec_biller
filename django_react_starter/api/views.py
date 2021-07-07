@@ -7,24 +7,24 @@ from django.http import JsonResponse, request
 
 def show_calculations(request):
     showall = list(CalculationRule.objects.values())
-    return JsonResponse({"data": showall})
+    return JsonResponse(showall, safe=False)
 
 
 def show_merchants(request):
     showall_merchants = list(Merchant.objects.values())
-    return JsonResponse({"data": showall_merchants})
+    return JsonResponse(showall_merchants, safe=False)
 
 
 def show_mandates(request):
     showall_mandates = list(Mandate.objects.values())
-    return JsonResponse({"data": showall_mandates})
+    return JsonResponse(showall_mandates, safe=False)
 
 
 def show_customers(request):
     showall_customers = list(Customer.objects.values())
-    return JsonResponse({"data": showall_customers})
+    return JsonResponse(showall_customers, safe=False)
 
 
 def show_instantpay(request):
     showall_instantpay = list(MandateInstantPay.objects.values())
-    return JsonResponse({"data": showall_instantpay})
+    return JsonResponse(showall_instantpay, safe=False)

@@ -44,6 +44,7 @@ export class BillingListForm extends Component {
       selectedchoice: -1,
     };
   }
+
   async componentDidMount() {
     const url = "http://127.0.0.1:8000/api/showmerchants";
     const response = await fetch(url);

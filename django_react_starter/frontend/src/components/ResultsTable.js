@@ -3,24 +3,7 @@ import React, { Component } from "react";
 export class ResultsTable extends Component {
   constructor(props) {
     super(props);
-    this.getHeader = this.getHeader.bind(this);
-    this.getRowsData = this.getRowsData.bind(this);
-    this.getKeys = this.getKeys.bind(this);
   }
-
-  getKeys = () => {
-    console.log(data.data);
-    return Object.keys(this.props.data.data[0]);
-  };
-
-  getRowsData = () => {};
-
-  getHeader = () => {
-    let keys = this.getKeys();
-    return keys.map((key, index) => {
-      return <th key={key}>{key.toUpperCase()}</th>;
-    });
-  };
 
   //   this.state = {
   //     data1: [],
@@ -37,30 +20,12 @@ export class ResultsTable extends Component {
     // }));
   }
 
-  mandatetable = () => {
-    const table1 = document.getElementById("mandatetable");
-
-    for (let i = 0; i < data1.length; i++) {
-      let row = `<tr>
-                    <td>${i}</td>
-                    <td>${data1[i].id}</td>
-                </tr>`;
-      table1.innerHTML += row;
-    }
-  };
-
-  //function for rendering
+  //function for rendering; map; html <tr>; hard code a few rows first
   render() {
     if (this.props.buttonStatus === "inactive") return false;
     return (
       <div className="table-responsive">
-        <table>
-          <thead>
-            <tr>{this.getHeader()}</tr>
-          </thead>
-          <tbody>{this.getRowsData()}</tbody>
-        </table>
-        {/* {this.props.transactionType == "Mandate" && (
+        {this.props.transactionType == "Mandate" && (
           <table className="table" align="right">
             <thead>
               <tr>
@@ -73,7 +38,9 @@ export class ResultsTable extends Component {
                 <th scope="col">Value</th>
               </tr>
             </thead>
-            <tbody> */}
+            <tbody></tbody>
+          </table>
+        )}
         {/* {{ funnctionName() }} later for when we progrma the function */}
         {/* <tr>
                 <th scope="row">1</th>
