@@ -242,15 +242,12 @@ from django.db import models
 class CalculationRule(models.Model):
     merchant_id = models.IntegerField(primary_key=True)
     company_name = models.CharField(max_length=50, blank=True, null=True)
-    calculation_rule_creditcard = models.CharField(
-        max_length=50, blank=True, null=True)
-    calculation_rule_casa = models.CharField(
-        max_length=50, blank=True, null=True)
+    calculation_rule_creditcard = models.CharField(max_length=50, blank=True, null=True)
+    calculation_rule_casa = models.CharField(max_length=50, blank=True, null=True)
     calculation_rule_instant_pay = models.CharField(
         max_length=50, blank=True, null=True
     )
-    calculation_rule_setup_fees = models.CharField(
-        max_length=50, blank=True, null=True)
+    calculation_rule_setup_fees = models.CharField(max_length=50, blank=True, null=True)
     is_live = models.BooleanField()
     calculation_rule_minimum_fee = models.CharField(
         max_length=50, blank=True, null=True
@@ -1407,9 +1404,9 @@ class CalculationRule(models.Model):
 class Merchant(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     company_registration_number = models.CharField(
-        max_length=255, blank=True, null=True)
-    logo_file_location = models.CharField(
-        max_length=255, blank=True, null=True)
+        max_length=255, blank=True, null=True
+    )
+    logo_file_location = models.CharField(max_length=255, blank=True, null=True)
     seller_id = models.CharField(max_length=255, blank=True, null=True)
     id = models.IntegerField(primary_key=True)
     show_effective_date = models.BooleanField()
@@ -1420,26 +1417,28 @@ class Merchant(models.Model):
     b2b_display_value = models.CharField(max_length=100)
     default_check = models.CharField(max_length=4)
     b2c_min_amount = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
     b2c_max_amount = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
     b2b1_min_amount = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
     b2b1_max_amount = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
-    link_id_display_value = models.CharField(
-        max_length=255, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
+    link_id_display_value = models.CharField(max_length=255, blank=True, null=True)
     show_link_id = models.BooleanField(blank=True, null=True)
-    reset_mandate_number_at_year_end = models.BooleanField(
-        blank=True, null=True)
+    reset_mandate_number_at_year_end = models.BooleanField(blank=True, null=True)
     next_mandate_number = models.IntegerField(blank=True, null=True)
-    mandate_number_pattern = models.CharField(
-        max_length=50, blank=True, null=True)
+    mandate_number_pattern = models.CharField(max_length=50, blank=True, null=True)
     init_mandate_number = models.IntegerField(blank=True, null=True)
     number_pattern_increment = models.IntegerField(blank=True, null=True)
     current_mandate_year = models.IntegerField(blank=True, null=True)
     instant_pay_order_no_pattern = models.CharField(
-        max_length=50, blank=True, null=True)
+        max_length=50, blank=True, null=True
+    )
     instant_pay_nextval = models.IntegerField(blank=True, null=True)
     instant_pay_init_number = models.IntegerField(blank=True, null=True)
     instant_pay_reset_no_year_end = models.BooleanField(blank=True, null=True)
@@ -1448,12 +1447,15 @@ class Merchant(models.Model):
     amount_drop_list = models.BooleanField(blank=True, null=True)
     instant_pay_amount_drop_list = models.BooleanField(blank=True, null=True)
     instant_pay_min_amount = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
     instant_pay_max_amount = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
     set_default_rules = models.BooleanField(blank=True, null=True)
     default_rules_amount = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
     default_contract_date = models.DateTimeField(blank=True, null=True)
     default_mandate_limit = models.IntegerField()
     default_instant_limit = models.IntegerField()
@@ -1476,10 +1478,10 @@ class Merchant(models.Model):
     direct_debit_id = models.CharField(max_length=10, blank=True, null=True)
     enable_customer_edit = models.BooleanField(blank=True, null=True)
     set_service = models.BooleanField(blank=True, null=True)
-    default_merchant_url = models.CharField(
-        max_length=255, blank=True, null=True)
+    default_merchant_url = models.CharField(max_length=255, blank=True, null=True)
     default_merchant_called_back_url = models.CharField(
-        max_length=255, blank=True, null=True)
+        max_length=255, blank=True, null=True
+    )
     init_mandate_ref = models.IntegerField()
     mandate_ref_pattern = models.CharField(max_length=50)
     mandate_ref_next = models.IntegerField(blank=True, null=True)
@@ -1514,15 +1516,15 @@ class Merchant(models.Model):
     b2b_duplicate_reference = models.IntegerField()
     term_condition_mandate = models.TextField(blank=True, null=True)
     term_condition_instant = models.TextField(blank=True, null=True)
-    mandate_term_location = models.CharField(
-        max_length=255, blank=True, null=True)
-    instant_term_location = models.CharField(
-        max_length=255, blank=True, null=True)
+    mandate_term_location = models.CharField(max_length=255, blank=True, null=True)
+    instant_term_location = models.CharField(max_length=255, blank=True, null=True)
     merchant_password_strength = models.IntegerField(blank=True, null=True)
     b2b1_instant_pay_min_amount = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
     b2b1_instant_pay_max_amount = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
     enable_enrp = models.BooleanField(blank=True, null=True)
     mandate_form_dynamic = models.BooleanField()
     default_rules_amount_enable = models.BooleanField(blank=True, null=True)
@@ -1541,7 +1543,8 @@ class Merchant(models.Model):
     set_secret = models.BooleanField(blank=True, null=True)
     secret_key = models.CharField(max_length=255, blank=True, null=True)
     default_collection_called_back_url = models.CharField(
-        max_length=255, blank=True, null=True)
+        max_length=255, blank=True, null=True
+    )
     enable_collection_called_back = models.BooleanField(blank=True, null=True)
     service_amount_readonly = models.BooleanField(blank=True, null=True)
     service_description_readonly = models.BooleanField(blank=True, null=True)
@@ -1552,12 +1555,11 @@ class Merchant(models.Model):
     mandate_expiry_merchant_email = models.TextField(blank=True, null=True)
     mandate_expiry_others_email = models.TextField(blank=True, null=True)
     mandate_expiry_interval = models.DecimalField(
-        max_digits=65535, decimal_places=65535, blank=True, null=True)
-    secondary_company_name = models.CharField(
-        max_length=255, blank=True, null=True)
+        max_digits=65535, decimal_places=65535, blank=True, null=True
+    )
+    secondary_company_name = models.CharField(max_length=255, blank=True, null=True)
     enable_whats_app = models.BooleanField(blank=True, null=True)
-    enable_autosend_receipt_collection = models.BooleanField(
-        blank=True, null=True)
+    enable_autosend_receipt_collection = models.BooleanField(blank=True, null=True)
     phone_no = models.CharField(max_length=255, blank=True, null=True)
     company_address = models.TextField(blank=True, null=True)
     show_collection_amount = models.BooleanField(blank=True, null=True)
@@ -1573,13 +1575,11 @@ class Merchant(models.Model):
     ip_link_id = models.BooleanField(blank=True, null=True)
     allow_instant_pay = models.BooleanField(blank=True, null=True)
     enable_merchant_package = models.BooleanField(blank=True, null=True)
-    enable_merchant_package_display = models.BooleanField(
-        blank=True, null=True)
+    enable_merchant_package_display = models.BooleanField(blank=True, null=True)
     merchant_package_display_type = models.IntegerField(blank=True, null=True)
     property_one = models.BooleanField(blank=True, null=True)
     property_two = models.BooleanField(blank=True, null=True)
-    merchant_package_display_type_layout = models.IntegerField(
-        blank=True, null=True)
+    merchant_package_display_type_layout = models.IntegerField(blank=True, null=True)
     ip_phone_number = models.BooleanField(blank=True, null=True)
     ip_property_one = models.BooleanField(blank=True, null=True)
     ip_property_two = models.BooleanField(blank=True, null=True)
@@ -1594,8 +1594,7 @@ class Merchant(models.Model):
     enable_mandate_order = models.BooleanField(blank=True, null=True)
     instant_pay_form_dynamic = models.BooleanField()
     allow_details_ip = models.BooleanField(blank=True, null=True)
-    masterdetails_amount_validate_ip = models.BooleanField(
-        blank=True, null=True)
+    masterdetails_amount_validate_ip = models.BooleanField(blank=True, null=True)
     enable_bank_with_logo = models.BooleanField(blank=True, null=True)
     enable_major_bank_order = models.BooleanField(blank=True, null=True)
     retry_next_option = models.IntegerField(blank=True, null=True)
@@ -1627,7 +1626,7 @@ class Merchant(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'merchant'
+        db_table = "merchant"
 
 
 # class MerchantAmountList(models.Model):

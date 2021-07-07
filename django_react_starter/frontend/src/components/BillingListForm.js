@@ -37,6 +37,30 @@ export class BillingListForm extends Component {
     this.props.setButton("active");
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      data1: [],
+      selectedchoice: -1,
+    };
+  }
+  async componentDidMount() {
+    const url = "http://127.0.0.1:8000/api/showmerchants";
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState((prevState) => ({
+      data1: data.data,
+      selectedchoice: prevState.selectedchoice,
+    }));
+  }
+
+  onTarget = (e) => {
+    this.setState((prevState) => ({
+      data1: prevState.data1,
+      selectedchoice: e.target.value,
+    }));
+  };
+
   render() {
     return (
       <div className="card card-body mt-4 mb-4">
@@ -45,14 +69,13 @@ export class BillingListForm extends Component {
           <select
             className="form-control"
             aria-label=".form-select-sm example"
-            onChange={this.handle_customerChange}
+            onChange={this.onTarget}
           >
-            <option defaultValue>Select Customer</option>
-            <option value="All">All</option>
-            <option value="Two">Two</option>
-            <option value="Three">Three</option>
+            <option value={-1}>Select Customer</option>
+            {this.state.data1.map((x, y) => (
+              <option value={y}>{x.company_name}</option>
+            ))}
           </select>
-
           <div className="form-group">
             <label style={{ margin: "8px 0px 0px" }}>From</label>
             <input className="form-control" type="date" />
