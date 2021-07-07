@@ -1,10 +1,10 @@
-# # This is an auto-generated Django model module.
-# # You'll have to do the following manually to clean this up:
-# #   * Rearrange models' order
-# #   * Make sure each model has one field with primary_key=True
-# #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-# #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# # Feel free to rename the models, but don't rename db_table values or field names.
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
 
@@ -203,19 +203,19 @@ from django.db import models
 #         unique_together = (('user', 'permission'),)
 
 
-# class Bank(models.Model):
-#     code = models.CharField(max_length=255, blank=True, null=True)
-#     name = models.CharField(max_length=255, blank=True, null=True)
-#     display_name = models.CharField(max_length=255, blank=True, null=True)
-#     is_allowed_direct_debit = models.BooleanField()
-#     bank_email = models.TextField(blank=True, null=True)
-#     position_order = models.IntegerField()
-#     logo_bank_file = models.CharField(max_length=255, blank=True, null=True)
-#     swift_code = models.CharField(max_length=255, blank=True, null=True)
+class Bank(models.Model):
+    code = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
+    display_name = models.CharField(max_length=255, blank=True, null=True)
+    is_allowed_direct_debit = models.BooleanField()
+    bank_email = models.TextField(blank=True, null=True)
+    position_order = models.IntegerField()
+    logo_bank_file = models.CharField(max_length=255, blank=True, null=True)
+    swift_code = models.CharField(max_length=255, blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'bank'
+    class Meta:
+        managed = False
+        db_table = 'bank'
 
 
 # class BatchUploadJob(models.Model):
@@ -242,12 +242,15 @@ from django.db import models
 class CalculationRule(models.Model):
     merchant_id = models.IntegerField(primary_key=True)
     company_name = models.CharField(max_length=50, blank=True, null=True)
-    calculation_rule_creditcard = models.CharField(max_length=50, blank=True, null=True)
-    calculation_rule_casa = models.CharField(max_length=50, blank=True, null=True)
+    calculation_rule_creditcard = models.CharField(
+        max_length=50, blank=True, null=True)
+    calculation_rule_casa = models.CharField(
+        max_length=50, blank=True, null=True)
     calculation_rule_instant_pay = models.CharField(
         max_length=50, blank=True, null=True
     )
-    calculation_rule_setup_fees = models.CharField(max_length=50, blank=True, null=True)
+    calculation_rule_setup_fees = models.CharField(
+        max_length=50, blank=True, null=True)
     is_live = models.BooleanField()
     calculation_rule_minimum_fee = models.CharField(
         max_length=50, blank=True, null=True
@@ -1034,371 +1037,371 @@ class CalculationRule(models.Model):
 #         db_table = 'lookupset'
 
 
-# class Mandate(models.Model):
-#     id = models.IntegerField(primary_key=True)
-#     business_model = models.IntegerField(blank=True, null=True)
-#     date_created = models.DateTimeField()
-#     purpose_of_payment = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     reference_number = models.CharField(max_length=255, blank=True, null=True)
-#     effective_date = models.DateTimeField(blank=True, null=True)
-#     expiry_date = models.DateTimeField(blank=True, null=True)
-#     status = models.IntegerField(blank=True, null=True)
-#     buyer = models.ForeignKey(
-#         'MandateParty', models.DO_NOTHING, blank=True, null=True)
-#     employee_id = models.IntegerField(blank=True, null=True)
-#     merchant = models.ForeignKey(
-#         'MandateParty', models.DO_NOTHING, blank=True, null=True)
-#     batch_id = models.CharField(max_length=255, blank=True, null=True)
-#     is_paper_mandate = models.BooleanField(blank=True, null=True)
-#     pre_approved = models.BooleanField(blank=True, null=True)
-#     cc_email = models.TextField(blank=True, null=True)
+class Mandate(models.Model):
+    id = models.IntegerField(primary_key=True)
+    business_model = models.IntegerField(blank=True, null=True)
+    date_created = models.DateTimeField()
+    purpose_of_payment = models.CharField(
+        max_length=255, blank=True, null=True)
+    reference_number = models.CharField(max_length=255, blank=True, null=True)
+    effective_date = models.DateTimeField(blank=True, null=True)
+    expiry_date = models.DateTimeField(blank=True, null=True)
+    status = models.IntegerField(blank=True, null=True)
+    buyer = models.ForeignKey(
+        'MandateParty', models.DO_NOTHING, blank=True, null=True, related_name='buyer')
+    employee_id = models.IntegerField(blank=True, null=True)
+    merchant = models.ForeignKey(
+        'MandateParty', models.DO_NOTHING, blank=True, null=True, related_name='merchant')
+    batch_id = models.CharField(max_length=255, blank=True, null=True)
+    is_paper_mandate = models.BooleanField(blank=True, null=True)
+    pre_approved = models.BooleanField(blank=True, null=True)
+    cc_email = models.TextField(blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate'
-
-
-# class MandateCollection(models.Model):
-#     id = models.IntegerField(primary_key=True)
-#     amount_original = models.DecimalField(
-#         max_digits=19, decimal_places=2, blank=True, null=True)
-#     amount_collection = models.DecimalField(
-#         max_digits=19, decimal_places=2, blank=True, null=True)
-#     collection_date = models.DateTimeField(blank=True, null=True)
-#     status = models.IntegerField(blank=True, null=True)
-#     batch_id = models.CharField(max_length=225, blank=True, null=True)
-#     transaction_id = models.CharField(max_length=50, blank=True, null=True)
-#     mandate_reference_no = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     email_reminder = models.IntegerField(blank=True, null=True)
-#     merchant_id = models.IntegerField(blank=True, null=True)
-#     response_date = models.DateTimeField(blank=True, null=True)
-#     response_batch = models.CharField(max_length=255, blank=True, null=True)
-#     number_retry = models.IntegerField(blank=True, null=True)
-#     date_created = models.DateTimeField(blank=True, null=True)
-#     mode_created = models.IntegerField(blank=True, null=True)
-#     payment_method = models.IntegerField(blank=True, null=True)
-#     cc_authorisation_code = models.CharField(
-#         max_length=100, blank=True, null=True)
-#     cc_transaction_id = models.CharField(max_length=255, blank=True, null=True)
-#     retry_count = models.IntegerField(blank=True, null=True)
-#     retry_max = models.IntegerField(blank=True, null=True)
-#     retry_triggered = models.BooleanField(blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_collection'
+    class Meta:
+        managed = False
+        db_table = 'mandate'
 
 
-# class MandateCollectionBatch(models.Model):
-#     batch_id = models.CharField(primary_key=True, max_length=255)
-#     date_created = models.DateTimeField(blank=True, null=True)
-#     merchant_id = models.IntegerField(blank=True, null=True)
-#     status = models.IntegerField(blank=True, null=True)
-#     file_location = models.CharField(max_length=1000, blank=True, null=True)
-#     collection_date = models.DateTimeField(blank=True, null=True)
-#     is_auto_collection = models.BooleanField(blank=True, null=True)
-#     payment_method = models.IntegerField(blank=True, null=True)
+class MandateCollection(models.Model):
+    id = models.IntegerField(primary_key=True)
+    amount_original = models.DecimalField(
+        max_digits=19, decimal_places=2, blank=True, null=True)
+    amount_collection = models.DecimalField(
+        max_digits=19, decimal_places=2, blank=True, null=True)
+    collection_date = models.DateTimeField(blank=True, null=True)
+    status = models.IntegerField(blank=True, null=True)
+    batch_id = models.CharField(max_length=225, blank=True, null=True)
+    transaction_id = models.CharField(max_length=50, blank=True, null=True)
+    mandate_reference_no = models.CharField(
+        max_length=255, blank=True, null=True)
+    email_reminder = models.IntegerField(blank=True, null=True)
+    merchant_id = models.IntegerField(blank=True, null=True)
+    response_date = models.DateTimeField(blank=True, null=True)
+    response_batch = models.CharField(max_length=255, blank=True, null=True)
+    number_retry = models.IntegerField(blank=True, null=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    mode_created = models.IntegerField(blank=True, null=True)
+    payment_method = models.IntegerField(blank=True, null=True)
+    cc_authorisation_code = models.CharField(
+        max_length=100, blank=True, null=True)
+    cc_transaction_id = models.CharField(max_length=255, blank=True, null=True)
+    retry_count = models.IntegerField(blank=True, null=True)
+    retry_max = models.IntegerField(blank=True, null=True)
+    retry_triggered = models.BooleanField(blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_collection_batch'
-
-
-# class MandateCollectionBatchCollections(models.Model):
-#     mandate_collection_batch_batch = models.ForeignKey(
-#         MandateCollectionBatch, models.DO_NOTHING, blank=True, null=True)
-#     collections = models.OneToOneField(MandateCollection, models.DO_NOTHING)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_collection_batch_collections'
-
-
-# class MandateCollectionItem(models.Model):
-#     item = models.CharField(max_length=255, blank=True, null=True)
-#     amount = models.DecimalField(
-#         max_digits=19, decimal_places=2, blank=True, null=True)
-#     collection = models.ForeignKey(
-#         MandateCollection, models.DO_NOTHING, blank=True, null=True)
-#     description = models.CharField(max_length=255, blank=True, null=True)
-#     customer_uid = models.CharField(max_length=255, blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_collection_item'
+    class Meta:
+        managed = False
+        db_table = 'mandate_collection'
 
 
-# class MandateCollectionItems(models.Model):
-#     mandate_collection = models.ForeignKey(
-#         MandateCollection, models.DO_NOTHING)
-#     items = models.ForeignKey(MandateCollectionItem, models.DO_NOTHING)
+class MandateCollectionBatch(models.Model):
+    batch_id = models.CharField(primary_key=True, max_length=255)
+    date_created = models.DateTimeField(blank=True, null=True)
+    merchant_id = models.IntegerField(blank=True, null=True)
+    status = models.IntegerField(blank=True, null=True)
+    file_location = models.CharField(max_length=1000, blank=True, null=True)
+    collection_date = models.DateTimeField(blank=True, null=True)
+    is_auto_collection = models.BooleanField(blank=True, null=True)
+    payment_method = models.IntegerField(blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_collection_items'
-
-
-# class MandateDetails(models.Model):
-#     details_id = models.AutoField(primary_key=True)
-#     details_number = models.CharField(max_length=255, blank=True, null=True)
-#     details_description = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     details_amount = models.DecimalField(
-#         max_digits=16, decimal_places=2, blank=True, null=True)
-#     details_created = models.DateTimeField(blank=True, null=True)
-#     details_change_by = models.CharField(max_length=255, blank=True, null=True)
-#     details_mandate_id = models.IntegerField(blank=True, null=True)
-#     details_type = models.IntegerField(blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_details'
+    class Meta:
+        managed = False
+        db_table = 'mandate_collection_batch'
 
 
-# class MandateInstantPay(models.Model):
-#     order_no = models.CharField(max_length=50)
-#     date_created = models.DateTimeField()
-#     merchant = models.ForeignKey('Merchant', models.DO_NOTHING)
-#     description = models.CharField(max_length=225, blank=True, null=True)
-#     amount = models.DecimalField(
-#         max_digits=65535, decimal_places=65535, blank=True, null=True)
-#     status = models.IntegerField(blank=True, null=True)
-#     fpx_transaction_id = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     effective_date = models.DateTimeField(blank=True, null=True)
-#     buyer_id = models.IntegerField(blank=True, null=True)
-#     employee_id = models.IntegerField(blank=True, null=True)
-#     mandate_id = models.IntegerField(blank=True, null=True)
-#     notes = models.CharField(max_length=255, blank=True, null=True)
-#     check_status_count = models.IntegerField(blank=True, null=True)
-#     fpx_transaction_date = models.DateTimeField(blank=True, null=True)
-#     node_id = models.CharField(max_length=255, blank=True, null=True)
-#     fpx_buyer_name = models.CharField(max_length=255, blank=True, null=True)
-#     bank = models.ForeignKey(Bank, models.DO_NOTHING, blank=True, null=True)
-#     business_model = models.IntegerField(blank=True, null=True)
-#     creation_mode = models.IntegerField(blank=True, null=True)
-#     merchant_url = models.CharField(max_length=255, blank=True, null=True)
-#     merchant_callback_url = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     ip_phone_number = models.CharField(max_length=255, blank=True, null=True)
-#     ip_property_one = models.TextField(blank=True, null=True)
-#     ip_property_two = models.TextField(blank=True, null=True)
-#     attached_file_location = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     payment_method = models.IntegerField(blank=True, null=True)
-#     cc_card_number = models.CharField(max_length=20, blank=True, null=True)
-#     cc_funding_method = models.CharField(max_length=6, blank=True, null=True)
-#     cc_issuer = models.CharField(max_length=255, blank=True, null=True)
-#     ac_direct = models.IntegerField(blank=True, null=True)
-#     ac_indirect = models.IntegerField(blank=True, null=True)
-#     cc_email = models.TextField(blank=True, null=True)
+class MandateCollectionBatchCollections(models.Model):
+    mandate_collection_batch_batch = models.ForeignKey(
+        MandateCollectionBatch, models.DO_NOTHING, blank=True, null=True)
+    collections = models.OneToOneField(MandateCollection, models.DO_NOTHING)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_instant_pay'
+    class Meta:
+        managed = False
+        db_table = 'mandate_collection_batch_collections'
 
 
-# class MandateInstantPayTermsConditions(models.Model):
-#     mandate_instant_pay = models.ForeignKey(
-#         MandateInstantPay, models.DO_NOTHING, blank=True, null=True)
-#     terms_conditions_id = models.IntegerField(blank=True, null=True)
+class MandateCollectionItem(models.Model):
+    item = models.CharField(max_length=255, blank=True, null=True)
+    amount = models.DecimalField(
+        max_digits=19, decimal_places=2, blank=True, null=True)
+    collection = models.ForeignKey(
+        MandateCollection, models.DO_NOTHING, blank=True, null=True)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    customer_uid = models.CharField(max_length=255, blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_instant_pay_terms_conditions'
-
-
-# class MandateOrder(models.Model):
-#     merchant_id = models.IntegerField(blank=True, null=True)
-#     transaction = models.ForeignKey(
-#         'MandateTransaction', models.DO_NOTHING, blank=True, null=True)
-#     collection_id = models.IntegerField(blank=True, null=True)
-#     order_amount = models.DecimalField(
-#         max_digits=16, decimal_places=2, blank=True, null=True)
-#     date_created = models.DateTimeField(blank=True, null=True)
-#     collection_date = models.DateField(blank=True, null=True)
-#     collection_triggered = models.BooleanField(blank=True, null=True)
-#     collection_status = models.IntegerField(blank=True, null=True)
-#     collection_retry = models.IntegerField(blank=True, null=True)
-#     collection_cancel = models.BooleanField(blank=True, null=True)
-#     date_cancel = models.DateTimeField(blank=True, null=True)
-#     order_retry = models.BooleanField(blank=True, null=True)
-#     creation_method = models.IntegerField(blank=True, null=True)
-#     order_date = models.DateTimeField(blank=True, null=True)
-#     collection_max_retry = models.IntegerField(blank=True, null=True)
-#     reference_id = models.CharField(max_length=255, blank=True, null=True)
-#     parent_id = models.IntegerField(blank=True, null=True)
-#     collection_disabled = models.BooleanField(blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_order'
+    class Meta:
+        managed = False
+        db_table = 'mandate_collection_item'
 
 
-# class MandateParty(models.Model):
-#     email_address = models.CharField(max_length=255, blank=True, null=True)
-#     phone_number = models.CharField(max_length=255, blank=True, null=True)
+class MandateCollectionItems(models.Model):
+    mandate_collection = models.ForeignKey(
+        MandateCollection, models.DO_NOTHING)
+    items = models.ForeignKey(MandateCollectionItem, models.DO_NOTHING)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_party'
-
-
-# class MandatePayOnBehalf(models.Model):
-#     account_code = models.CharField(primary_key=True, max_length=255)
-#     mandate = models.ForeignKey(Mandate, models.DO_NOTHING)
-#     merchant = models.ForeignKey('Merchant', models.DO_NOTHING)
-#     mandate_details = models.OneToOneField(
-#         MandateDetails, models.DO_NOTHING, blank=True, null=True)
-#     date_created = models.DateTimeField(blank=True, null=True)
-#     date_updated = models.DateTimeField(blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_pay_on_behalf'
-#         unique_together = (('account_code', 'merchant'),)
+    class Meta:
+        managed = False
+        db_table = 'mandate_collection_items'
 
 
-# class MandateRules(models.Model):
-#     mandate = models.ForeignKey(Mandate, models.DO_NOTHING)
-#     agree = models.BooleanField()
-#     amount = models.DecimalField(
-#         max_digits=65535, decimal_places=65535, blank=True, null=True)
-#     date_period = models.DateTimeField(blank=True, null=True)
-#     amount_enable = models.BooleanField(blank=True, null=True)
-#     date_enable = models.BooleanField(blank=True, null=True)
-#     period = models.IntegerField(blank=True, null=True)
-#     period_option = models.IntegerField(blank=True, null=True)
-#     auto_expiry = models.BooleanField(blank=True, null=True)
+class MandateDetails(models.Model):
+    details_id = models.AutoField(primary_key=True)
+    details_number = models.CharField(max_length=255, blank=True, null=True)
+    details_description = models.CharField(
+        max_length=255, blank=True, null=True)
+    details_amount = models.DecimalField(
+        max_digits=16, decimal_places=2, blank=True, null=True)
+    details_created = models.DateTimeField(blank=True, null=True)
+    details_change_by = models.CharField(max_length=255, blank=True, null=True)
+    details_mandate_id = models.IntegerField(blank=True, null=True)
+    details_type = models.IntegerField(blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_rules'
-
-
-# class MandateTransaction(models.Model):
-#     id = models.CharField(primary_key=True, max_length=50)
-#     amount = models.DecimalField(
-#         max_digits=19, decimal_places=2, blank=True, null=True)
-#     date_created = models.DateTimeField()
-#     fpx_transaction_id = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     frequency = models.IntegerField(blank=True, null=True)
-#     maximum_frequency = models.IntegerField(blank=True, null=True)
-#     status = models.IntegerField(blank=True, null=True)
-#     type = models.IntegerField(blank=True, null=True)
-#     bank = models.ForeignKey(Bank, models.DO_NOTHING, blank=True, null=True)
-#     mandate = models.ForeignKey(
-#         Mandate, models.DO_NOTHING, blank=True, null=True)
-#     node_id = models.CharField(max_length=255, blank=True, null=True)
-#     terminate_reason = models.CharField(max_length=255, blank=True, null=True)
-#     principal_uid = models.ForeignKey(
-#         'Principal', models.DO_NOTHING, db_column='principal_uid', blank=True, null=True)
-#     reference_number = models.CharField(max_length=255, blank=True, null=True)
-#     customer_name = models.CharField(max_length=255, blank=True, null=True)
-#     phone_number = models.CharField(max_length=255, blank=True, null=True)
-#     email = models.CharField(max_length=255, blank=True, null=True)
-#     id_type = models.IntegerField(blank=True, null=True)
-#     id_value = models.CharField(max_length=255, blank=True, null=True)
-#     effective_date = models.DateTimeField(blank=True, null=True)
-#     expiry_date = models.DateTimeField(blank=True, null=True)
-#     purpose = models.CharField(max_length=255, blank=True, null=True)
-#     link_id = models.CharField(max_length=255, blank=True, null=True)
-#     check_status_count = models.IntegerField(blank=True, null=True)
-#     fpx_transaction_date = models.DateTimeField(blank=True, null=True)
-#     creation_mode = models.IntegerField(blank=True, null=True)
-#     fpx_buyer_name = models.CharField(max_length=255, blank=True, null=True)
-#     last_collection_date = models.DateTimeField(blank=True, null=True)
-#     default_collection_amount = models.DecimalField(
-#         max_digits=16, decimal_places=2, blank=True, null=True)
-#     additional_field_one = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     additional_field_two = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     attached_file_location = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     merchant_url = models.CharField(max_length=255, blank=True, null=True)
-#     merchant_callback_url = models.TextField(blank=True, null=True)
-#     package_id = models.IntegerField(blank=True, null=True)
-#     allow_order = models.BooleanField(blank=True, null=True)
-#     order_triggered = models.IntegerField(blank=True, null=True)
-#     terminated_date = models.DateTimeField(blank=True, null=True)
-#     order_cancel_date = models.DateTimeField(blank=True, null=True)
-#     order_auto_cancel = models.BooleanField(blank=True, null=True)
-#     collection_date = models.CharField(max_length=-1, blank=True, null=True)
-#     initial_collection_amount = models.DecimalField(
-#         max_digits=16, decimal_places=2, blank=True, null=True)
-#     initial_collection_opt = models.IntegerField(blank=True, null=True)
-#     start_collection_date = models.DateTimeField(blank=True, null=True)
-#     end_collection_date = models.DateTimeField(blank=True, null=True)
-#     payment_method = models.IntegerField(blank=True, null=True)
-#     cc_token = models.CharField(max_length=255, blank=True, null=True)
-#     terminate_email = models.CharField(max_length=255, blank=True, null=True)
-#     collection_count = models.IntegerField(blank=True, null=True)
-#     collection_auto_retry = models.IntegerField(blank=True, null=True)
-#     collection_retry_remark = models.TextField(blank=True, null=True)
-#     collection_remark = models.TextField(blank=True, null=True)
-#     additional_field_three = models.TextField(blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_transaction'
+    class Meta:
+        managed = False
+        db_table = 'mandate_details'
 
 
-# class MandateTransactionCollections(models.Model):
-#     mandate_transaction = models.ForeignKey(
-#         MandateTransaction, models.DO_NOTHING, blank=True, null=True)
-#     collections = models.OneToOneField(MandateCollection, models.DO_NOTHING)
+class MandateInstantPay(models.Model):
+    order_no = models.CharField(max_length=50)
+    date_created = models.DateTimeField()
+    merchant = models.ForeignKey('Merchant', models.DO_NOTHING)
+    description = models.CharField(max_length=225, blank=True, null=True)
+    amount = models.DecimalField(
+        max_digits=65535, decimal_places=65535, blank=True, null=True)
+    status = models.IntegerField(blank=True, null=True)
+    fpx_transaction_id = models.CharField(
+        max_length=255, blank=True, null=True)
+    effective_date = models.DateTimeField(blank=True, null=True)
+    buyer_id = models.IntegerField(blank=True, null=True)
+    employee_id = models.IntegerField(blank=True, null=True)
+    mandate_id = models.IntegerField(blank=True, null=True)
+    notes = models.CharField(max_length=255, blank=True, null=True)
+    check_status_count = models.IntegerField(blank=True, null=True)
+    fpx_transaction_date = models.DateTimeField(blank=True, null=True)
+    node_id = models.CharField(max_length=255, blank=True, null=True)
+    fpx_buyer_name = models.CharField(max_length=255, blank=True, null=True)
+    bank = models.ForeignKey(Bank, models.DO_NOTHING, blank=True, null=True)
+    business_model = models.IntegerField(blank=True, null=True)
+    creation_mode = models.IntegerField(blank=True, null=True)
+    merchant_url = models.CharField(max_length=255, blank=True, null=True)
+    merchant_callback_url = models.CharField(
+        max_length=255, blank=True, null=True)
+    ip_phone_number = models.CharField(max_length=255, blank=True, null=True)
+    ip_property_one = models.TextField(blank=True, null=True)
+    ip_property_two = models.TextField(blank=True, null=True)
+    attached_file_location = models.CharField(
+        max_length=255, blank=True, null=True)
+    payment_method = models.IntegerField(blank=True, null=True)
+    cc_card_number = models.CharField(max_length=20, blank=True, null=True)
+    cc_funding_method = models.CharField(max_length=6, blank=True, null=True)
+    cc_issuer = models.CharField(max_length=255, blank=True, null=True)
+    ac_direct = models.IntegerField(blank=True, null=True)
+    ac_indirect = models.IntegerField(blank=True, null=True)
+    cc_email = models.TextField(blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_transaction_collections'
-
-
-# class MandateTransactionEnrp(models.Model):
-#     transaction = models.ForeignKey(MandateTransaction, models.DO_NOTHING)
-#     batch_id = models.CharField(max_length=50, blank=True, null=True)
-#     account_holder_name = models.CharField(
-#         max_length=225, blank=True, null=True)
-#     account_no = models.CharField(max_length=50, blank=True, null=True)
-#     fpx_approval_status = models.IntegerField(blank=True, null=True)
-#     record_number = models.CharField(max_length=225, blank=True, null=True)
-#     mandate_reference_number = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     response_date = models.DateTimeField(blank=True, null=True)
-#     enrp_mandate_condition = models.IntegerField()
-#     is_credit_card = models.BooleanField(blank=True, null=True)
-#     meps_bank_code = models.CharField(max_length=-1, blank=True, null=True)
-#     fpx_bank_code = models.CharField(max_length=10, blank=True, null=True)
-#     allow_auto_collection = models.IntegerField()
-#     date_deleted = models.DateTimeField(blank=True, null=True)
-#     encryption_key = models.CharField(max_length=255, blank=True, null=True)
-#     notes = models.TextField(blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_transaction_enrp'
-
-
-# class MandateTransactionTermsConditions(models.Model):
-#     mandate_transaction = models.ForeignKey(
-#         MandateTransaction, models.DO_NOTHING, blank=True, null=True)
-#     terms_conditions_id = models.IntegerField(blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_transaction_terms_conditions'
+    class Meta:
+        managed = False
+        db_table = 'mandate_instant_pay'
 
 
-# class MandateTransactions(models.Model):
-#     mandate = models.ForeignKey(Mandate, models.DO_NOTHING)
-#     transactions = models.OneToOneField(MandateTransaction, models.DO_NOTHING)
+class MandateInstantPayTermsConditions(models.Model):
+    mandate_instant_pay = models.ForeignKey(
+        MandateInstantPay, models.DO_NOTHING, blank=True, null=True)
+    terms_conditions_id = models.IntegerField(blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'mandate_transactions'
+    class Meta:
+        managed = False
+        db_table = 'mandate_instant_pay_terms_conditions'
+
+
+class MandateOrder(models.Model):
+    merchant_id = models.IntegerField(blank=True, null=True)
+    transaction = models.ForeignKey(
+        'MandateTransaction', models.DO_NOTHING, blank=True, null=True)
+    collection_id = models.IntegerField(blank=True, null=True)
+    order_amount = models.DecimalField(
+        max_digits=16, decimal_places=2, blank=True, null=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    collection_date = models.DateField(blank=True, null=True)
+    collection_triggered = models.BooleanField(blank=True, null=True)
+    collection_status = models.IntegerField(blank=True, null=True)
+    collection_retry = models.IntegerField(blank=True, null=True)
+    collection_cancel = models.BooleanField(blank=True, null=True)
+    date_cancel = models.DateTimeField(blank=True, null=True)
+    order_retry = models.BooleanField(blank=True, null=True)
+    creation_method = models.IntegerField(blank=True, null=True)
+    order_date = models.DateTimeField(blank=True, null=True)
+    collection_max_retry = models.IntegerField(blank=True, null=True)
+    reference_id = models.CharField(max_length=255, blank=True, null=True)
+    parent_id = models.IntegerField(blank=True, null=True)
+    collection_disabled = models.BooleanField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'mandate_order'
+
+
+class MandateParty(models.Model):
+    email_address = models.CharField(max_length=255, blank=True, null=True)
+    phone_number = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'mandate_party'
+
+
+class MandatePayOnBehalf(models.Model):
+    account_code = models.CharField(primary_key=True, max_length=255)
+    mandate = models.ForeignKey(Mandate, models.DO_NOTHING)
+    merchant = models.ForeignKey('Merchant', models.DO_NOTHING)
+    mandate_details = models.OneToOneField(
+        MandateDetails, models.DO_NOTHING, blank=True, null=True)
+    date_created = models.DateTimeField(blank=True, null=True)
+    date_updated = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'mandate_pay_on_behalf'
+        unique_together = (('account_code', 'merchant'),)
+
+
+class MandateRules(models.Model):
+    mandate = models.ForeignKey(Mandate, models.DO_NOTHING)
+    agree = models.BooleanField()
+    amount = models.DecimalField(
+        max_digits=65535, decimal_places=65535, blank=True, null=True)
+    date_period = models.DateTimeField(blank=True, null=True)
+    amount_enable = models.BooleanField(blank=True, null=True)
+    date_enable = models.BooleanField(blank=True, null=True)
+    period = models.IntegerField(blank=True, null=True)
+    period_option = models.IntegerField(blank=True, null=True)
+    auto_expiry = models.BooleanField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'mandate_rules'
+
+
+class MandateTransaction(models.Model):
+    id = models.CharField(primary_key=True, max_length=50)
+    amount = models.DecimalField(
+        max_digits=19, decimal_places=2, blank=True, null=True)
+    date_created = models.DateTimeField()
+    fpx_transaction_id = models.CharField(
+        max_length=255, blank=True, null=True)
+    frequency = models.IntegerField(blank=True, null=True)
+    maximum_frequency = models.IntegerField(blank=True, null=True)
+    status = models.IntegerField(blank=True, null=True)
+    type = models.IntegerField(blank=True, null=True)
+    bank = models.ForeignKey(Bank, models.DO_NOTHING, blank=True, null=True)
+    mandate = models.ForeignKey(
+        Mandate, models.DO_NOTHING, blank=True, null=True)
+    node_id = models.CharField(max_length=255, blank=True, null=True)
+    terminate_reason = models.CharField(max_length=255, blank=True, null=True)
+    principal_uid = models.ForeignKey(
+        'Principal', models.DO_NOTHING, db_column='principal_uid', blank=True, null=True)
+    reference_number = models.CharField(max_length=255, blank=True, null=True)
+    customer_name = models.CharField(max_length=255, blank=True, null=True)
+    phone_number = models.CharField(max_length=255, blank=True, null=True)
+    email = models.CharField(max_length=255, blank=True, null=True)
+    id_type = models.IntegerField(blank=True, null=True)
+    id_value = models.CharField(max_length=255, blank=True, null=True)
+    effective_date = models.DateTimeField(blank=True, null=True)
+    expiry_date = models.DateTimeField(blank=True, null=True)
+    purpose = models.CharField(max_length=255, blank=True, null=True)
+    link_id = models.CharField(max_length=255, blank=True, null=True)
+    check_status_count = models.IntegerField(blank=True, null=True)
+    fpx_transaction_date = models.DateTimeField(blank=True, null=True)
+    creation_mode = models.IntegerField(blank=True, null=True)
+    fpx_buyer_name = models.CharField(max_length=255, blank=True, null=True)
+    last_collection_date = models.DateTimeField(blank=True, null=True)
+    default_collection_amount = models.DecimalField(
+        max_digits=16, decimal_places=2, blank=True, null=True)
+    additional_field_one = models.CharField(
+        max_length=255, blank=True, null=True)
+    additional_field_two = models.CharField(
+        max_length=255, blank=True, null=True)
+    attached_file_location = models.CharField(
+        max_length=255, blank=True, null=True)
+    merchant_url = models.CharField(max_length=255, blank=True, null=True)
+    merchant_callback_url = models.TextField(blank=True, null=True)
+    package_id = models.IntegerField(blank=True, null=True)
+    allow_order = models.BooleanField(blank=True, null=True)
+    order_triggered = models.IntegerField(blank=True, null=True)
+    terminated_date = models.DateTimeField(blank=True, null=True)
+    order_cancel_date = models.DateTimeField(blank=True, null=True)
+    order_auto_cancel = models.BooleanField(blank=True, null=True)
+    collection_date = models.CharField(max_length=255, blank=True, null=True)
+    initial_collection_amount = models.DecimalField(
+        max_digits=16, decimal_places=2, blank=True, null=True)
+    initial_collection_opt = models.IntegerField(blank=True, null=True)
+    start_collection_date = models.DateTimeField(blank=True, null=True)
+    end_collection_date = models.DateTimeField(blank=True, null=True)
+    payment_method = models.IntegerField(blank=True, null=True)
+    cc_token = models.CharField(max_length=255, blank=True, null=True)
+    terminate_email = models.CharField(max_length=255, blank=True, null=True)
+    collection_count = models.IntegerField(blank=True, null=True)
+    collection_auto_retry = models.IntegerField(blank=True, null=True)
+    collection_retry_remark = models.TextField(blank=True, null=True)
+    collection_remark = models.TextField(blank=True, null=True)
+    additional_field_three = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'mandate_transaction'
+
+
+class MandateTransactionCollections(models.Model):
+    mandate_transaction = models.ForeignKey(
+        MandateTransaction, models.DO_NOTHING, blank=True, null=True)
+    collections = models.OneToOneField(MandateCollection, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'mandate_transaction_collections'
+
+
+class MandateTransactionEnrp(models.Model):
+    transaction = models.ForeignKey(MandateTransaction, models.DO_NOTHING)
+    batch_id = models.CharField(max_length=50, blank=True, null=True)
+    account_holder_name = models.CharField(
+        max_length=225, blank=True, null=True)
+    account_no = models.CharField(max_length=50, blank=True, null=True)
+    fpx_approval_status = models.IntegerField(blank=True, null=True)
+    record_number = models.CharField(max_length=225, blank=True, null=True)
+    mandate_reference_number = models.CharField(
+        max_length=255, blank=True, null=True)
+    response_date = models.DateTimeField(blank=True, null=True)
+    enrp_mandate_condition = models.IntegerField()
+    is_credit_card = models.BooleanField(blank=True, null=True)
+    meps_bank_code = models.CharField(max_length=255, blank=True, null=True)
+    fpx_bank_code = models.CharField(max_length=10, blank=True, null=True)
+    allow_auto_collection = models.IntegerField()
+    date_deleted = models.DateTimeField(blank=True, null=True)
+    encryption_key = models.CharField(max_length=255, blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'mandate_transaction_enrp'
+
+
+class MandateTransactionTermsConditions(models.Model):
+    mandate_transaction = models.ForeignKey(
+        MandateTransaction, models.DO_NOTHING, blank=True, null=True)
+    terms_conditions_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'mandate_transaction_terms_conditions'
+
+
+class MandateTransactions(models.Model):
+    mandate = models.ForeignKey(Mandate, models.DO_NOTHING)
+    transactions = models.OneToOneField(MandateTransaction, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'mandate_transactions'
 
 
 class Merchant(models.Model):
@@ -1406,7 +1409,8 @@ class Merchant(models.Model):
     company_registration_number = models.CharField(
         max_length=255, blank=True, null=True
     )
-    logo_file_location = models.CharField(max_length=255, blank=True, null=True)
+    logo_file_location = models.CharField(
+        max_length=255, blank=True, null=True)
     seller_id = models.CharField(max_length=255, blank=True, null=True)
     id = models.IntegerField(primary_key=True)
     show_effective_date = models.BooleanField()
@@ -1428,11 +1432,14 @@ class Merchant(models.Model):
     b2b1_max_amount = models.DecimalField(
         max_digits=65535, decimal_places=65535, blank=True, null=True
     )
-    link_id_display_value = models.CharField(max_length=255, blank=True, null=True)
+    link_id_display_value = models.CharField(
+        max_length=255, blank=True, null=True)
     show_link_id = models.BooleanField(blank=True, null=True)
-    reset_mandate_number_at_year_end = models.BooleanField(blank=True, null=True)
+    reset_mandate_number_at_year_end = models.BooleanField(
+        blank=True, null=True)
     next_mandate_number = models.IntegerField(blank=True, null=True)
-    mandate_number_pattern = models.CharField(max_length=50, blank=True, null=True)
+    mandate_number_pattern = models.CharField(
+        max_length=50, blank=True, null=True)
     init_mandate_number = models.IntegerField(blank=True, null=True)
     number_pattern_increment = models.IntegerField(blank=True, null=True)
     current_mandate_year = models.IntegerField(blank=True, null=True)
@@ -1478,7 +1485,8 @@ class Merchant(models.Model):
     direct_debit_id = models.CharField(max_length=10, blank=True, null=True)
     enable_customer_edit = models.BooleanField(blank=True, null=True)
     set_service = models.BooleanField(blank=True, null=True)
-    default_merchant_url = models.CharField(max_length=255, blank=True, null=True)
+    default_merchant_url = models.CharField(
+        max_length=255, blank=True, null=True)
     default_merchant_called_back_url = models.CharField(
         max_length=255, blank=True, null=True
     )
@@ -1516,8 +1524,10 @@ class Merchant(models.Model):
     b2b_duplicate_reference = models.IntegerField()
     term_condition_mandate = models.TextField(blank=True, null=True)
     term_condition_instant = models.TextField(blank=True, null=True)
-    mandate_term_location = models.CharField(max_length=255, blank=True, null=True)
-    instant_term_location = models.CharField(max_length=255, blank=True, null=True)
+    mandate_term_location = models.CharField(
+        max_length=255, blank=True, null=True)
+    instant_term_location = models.CharField(
+        max_length=255, blank=True, null=True)
     merchant_password_strength = models.IntegerField(blank=True, null=True)
     b2b1_instant_pay_min_amount = models.DecimalField(
         max_digits=65535, decimal_places=65535, blank=True, null=True
@@ -1557,9 +1567,11 @@ class Merchant(models.Model):
     mandate_expiry_interval = models.DecimalField(
         max_digits=65535, decimal_places=65535, blank=True, null=True
     )
-    secondary_company_name = models.CharField(max_length=255, blank=True, null=True)
+    secondary_company_name = models.CharField(
+        max_length=255, blank=True, null=True)
     enable_whats_app = models.BooleanField(blank=True, null=True)
-    enable_autosend_receipt_collection = models.BooleanField(blank=True, null=True)
+    enable_autosend_receipt_collection = models.BooleanField(
+        blank=True, null=True)
     phone_no = models.CharField(max_length=255, blank=True, null=True)
     company_address = models.TextField(blank=True, null=True)
     show_collection_amount = models.BooleanField(blank=True, null=True)
@@ -1575,11 +1587,13 @@ class Merchant(models.Model):
     ip_link_id = models.BooleanField(blank=True, null=True)
     allow_instant_pay = models.BooleanField(blank=True, null=True)
     enable_merchant_package = models.BooleanField(blank=True, null=True)
-    enable_merchant_package_display = models.BooleanField(blank=True, null=True)
+    enable_merchant_package_display = models.BooleanField(
+        blank=True, null=True)
     merchant_package_display_type = models.IntegerField(blank=True, null=True)
     property_one = models.BooleanField(blank=True, null=True)
     property_two = models.BooleanField(blank=True, null=True)
-    merchant_package_display_type_layout = models.IntegerField(blank=True, null=True)
+    merchant_package_display_type_layout = models.IntegerField(
+        blank=True, null=True)
     ip_phone_number = models.BooleanField(blank=True, null=True)
     ip_property_one = models.BooleanField(blank=True, null=True)
     ip_property_two = models.BooleanField(blank=True, null=True)
@@ -1594,7 +1608,8 @@ class Merchant(models.Model):
     enable_mandate_order = models.BooleanField(blank=True, null=True)
     instant_pay_form_dynamic = models.BooleanField()
     allow_details_ip = models.BooleanField(blank=True, null=True)
-    masterdetails_amount_validate_ip = models.BooleanField(blank=True, null=True)
+    masterdetails_amount_validate_ip = models.BooleanField(
+        blank=True, null=True)
     enable_bank_with_logo = models.BooleanField(blank=True, null=True)
     enable_major_bank_order = models.BooleanField(blank=True, null=True)
     retry_next_option = models.IntegerField(blank=True, null=True)
@@ -1676,7 +1691,7 @@ class Merchant(models.Model):
 #     monthly_amount_value = models.DecimalField(
 #         max_digits=16, decimal_places=2, blank=True, null=True)
 #     yearly_schedule_date = models.CharField(
-#         max_length=-1, blank=True, null=True)
+#         max_length=255, blank=True, null=True)
 #     yearly_enable_rules = models.BooleanField(blank=True, null=True)
 #     yearly_effective_option = models.IntegerField(blank=True, null=True)
 #     yearly_effective_day = models.IntegerField(blank=True, null=True)
@@ -1747,7 +1762,7 @@ class Merchant(models.Model):
 #     monthly_effective_option = models.IntegerField(blank=True, null=True)
 #     monthly_effective_day = models.IntegerField(blank=True, null=True)
 #     yearly_schedule_date = models.CharField(
-#         max_length=-1, blank=True, null=True)
+#         max_length=255, blank=True, null=True)
 #     yearly_schedule_time = models.DecimalField(
 #         max_digits=4, decimal_places=2, blank=True, null=True)
 #     yearly_amount_option = models.IntegerField(blank=True, null=True)
@@ -1781,15 +1796,15 @@ class Merchant(models.Model):
 #         db_table = 'merchant_auto_collection_settings'
 
 
-# class MerchantBankAccount(models.Model):
-#     account_number = models.CharField(max_length=255, blank=True, null=True)
-#     seller_id = models.CharField(max_length=255, blank=True, null=True)
-#     bank = models.ForeignKey(Bank, models.DO_NOTHING, blank=True, null=True)
-#     collection_manual_update = models.BooleanField(blank=True, null=True)
+class MerchantBankAccount(models.Model):
+    account_number = models.CharField(max_length=255, blank=True, null=True)
+    seller_id = models.CharField(max_length=255, blank=True, null=True)
+    bank = models.ForeignKey(Bank, models.DO_NOTHING, blank=True, null=True)
+    collection_manual_update = models.BooleanField(blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'merchant_bank_account'
+    class Meta:
+        managed = False
+        db_table = 'merchant_bank_account'
 
 
 # class MerchantCallbackQueue(models.Model):
@@ -1961,14 +1976,14 @@ class Merchant(models.Model):
 #         db_table = 'merchant_instant_pay_amount_list'
 
 
-# class MerchantMerchantBankAccounts(models.Model):
-#     merchant = models.ForeignKey(Merchant, models.DO_NOTHING)
-#     merchant_bank_accounts = models.OneToOneField(
-#         MerchantBankAccount, models.DO_NOTHING)
+class MerchantMerchantBankAccounts(models.Model):
+    merchant = models.ForeignKey(Merchant, models.DO_NOTHING)
+    merchant_bank_accounts = models.OneToOneField(
+        MerchantBankAccount, models.DO_NOTHING)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'merchant_merchant_bank_accounts'
+    class Meta:
+        managed = False
+        db_table = 'merchant_merchant_bank_accounts'
 
 
 # class MerchantOnestopPayment(models.Model):
@@ -2002,7 +2017,7 @@ class Merchant(models.Model):
 # class MerchantPackageSettings(models.Model):
 #     id = models.IntegerField(primary_key=True)
 #     merchant_id = models.IntegerField(blank=True, null=True)
-#     label = models.CharField(max_length=-1, blank=True, null=True)
+#     label = models.CharField(max_length=255, blank=True, null=True)
 #     enable_amount = models.BooleanField(blank=True, null=True)
 #     amount = models.DecimalField(
 #         max_digits=19, decimal_places=2, blank=True, null=True)
@@ -5872,54 +5887,54 @@ class Merchant(models.Model):
 #         db_table = 'pin'
 
 
-# class Principal(models.Model):
-#     uid = models.CharField(primary_key=True, max_length=32)
-#     name = models.CharField(max_length=255)
-#     extid = models.CharField(unique=True, max_length=50, blank=True, null=True)
-#     username = models.CharField(
-#         unique=True, max_length=50, blank=True, null=True)
-#     password = models.CharField(max_length=255, blank=True, null=True)
-#     isgroup = models.SmallIntegerField()
-#     acl_uid = models.CharField(max_length=32, blank=True, null=True)
-#     security_level_uid = models.CharField(max_length=32, blank=True, null=True)
-#     isinternal = models.SmallIntegerField()
-#     issuspended = models.SmallIntegerField()
-#     gender = models.SmallIntegerField()
-#     email = models.CharField(max_length=255, blank=True, null=True)
-#     profile_uid = models.ForeignKey(
-#         'Profile', models.DO_NOTHING, db_column='profile_uid', blank=True, null=True)
-#     canlogin = models.SmallIntegerField()
-#     active_from = models.DateTimeField(blank=True, null=True)
-#     active_to = models.DateTimeField(blank=True, null=True)
-#     date_registered = models.DateTimeField(blank=True, null=True)
-#     barcode = models.CharField(
-#         unique=True, max_length=50, blank=True, null=True)
-#     external_barcode = models.CharField(
-#         unique=True, max_length=50, blank=True, null=True)
-#     ptype = models.SmallIntegerField()
-#     date_last_modified_of_password = models.DateTimeField(
-#         blank=True, null=True)
-#     loginmessage = models.TextField(blank=True, null=True)
-#     address = models.TextField(blank=True, null=True)
-#     ic_passport_no = models.CharField(max_length=32, blank=True, null=True)
-#     date_of_birth = models.DateTimeField(blank=True, null=True)
-#     nationality = models.CharField(max_length=50, blank=True, null=True)
-#     business_occupation = models.CharField(
-#         max_length=255, blank=True, null=True)
-#     phone_number = models.CharField(max_length=20, blank=True, null=True)
-#     mobile_phone = models.CharField(max_length=20, blank=True, null=True)
-#     af7c0ba6be8a452194d3e040048463d6 = models.CharField(
-#         max_length=100, blank=True, null=True)
-#     jc2300d55f3547e3a495f6332e259604 = models.CharField(
-#         max_length=100, blank=True, null=True)
-#     mdd0000000000000000000000000001p = models.CharField(
-#         max_length=100, blank=True, null=True)
-#     fc3b7ba10a1441c8ae2f6884869bd95f = models.CharField(
-#         max_length=100, blank=True, null=True)
+class Principal(models.Model):
+    uid = models.CharField(primary_key=True, max_length=32)
+    name = models.CharField(max_length=255)
+    extid = models.CharField(unique=True, max_length=50, blank=True, null=True)
+    username = models.CharField(
+        unique=True, max_length=50, blank=True, null=True)
+    password = models.CharField(max_length=255, blank=True, null=True)
+    isgroup = models.SmallIntegerField()
+    acl_uid = models.CharField(max_length=32, blank=True, null=True)
+    security_level_uid = models.CharField(max_length=32, blank=True, null=True)
+    isinternal = models.SmallIntegerField()
+    issuspended = models.SmallIntegerField()
+    gender = models.SmallIntegerField()
+    email = models.CharField(max_length=255, blank=True, null=True)
+    profile_uid = models.ForeignKey(
+        'Profile', models.DO_NOTHING, db_column='profile_uid', blank=True, null=True)
+    canlogin = models.SmallIntegerField()
+    active_from = models.DateTimeField(blank=True, null=True)
+    active_to = models.DateTimeField(blank=True, null=True)
+    date_registered = models.DateTimeField(blank=True, null=True)
+    barcode = models.CharField(
+        unique=True, max_length=50, blank=True, null=True)
+    external_barcode = models.CharField(
+        unique=True, max_length=50, blank=True, null=True)
+    ptype = models.SmallIntegerField()
+    date_last_modified_of_password = models.DateTimeField(
+        blank=True, null=True)
+    loginmessage = models.TextField(blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    ic_passport_no = models.CharField(max_length=32, blank=True, null=True)
+    date_of_birth = models.DateTimeField(blank=True, null=True)
+    nationality = models.CharField(max_length=50, blank=True, null=True)
+    business_occupation = models.CharField(
+        max_length=255, blank=True, null=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
+    mobile_phone = models.CharField(max_length=20, blank=True, null=True)
+    af7c0ba6be8a452194d3e040048463d6 = models.CharField(
+        max_length=100, blank=True, null=True)
+    jc2300d55f3547e3a495f6332e259604 = models.CharField(
+        max_length=100, blank=True, null=True)
+    mdd0000000000000000000000000001p = models.CharField(
+        max_length=100, blank=True, null=True)
+    fc3b7ba10a1441c8ae2f6884869bd95f = models.CharField(
+        max_length=100, blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'principal'
+    class Meta:
+        managed = False
+        db_table = 'principal'
 
 
 # class PrincipalDefaultOrganization(models.Model):
@@ -5982,103 +5997,103 @@ class Merchant(models.Model):
 #             ('property_uid', 'from_node_uid', 'to_principal_uid'),)
 
 
-# class Profile(models.Model):
-#     uid = models.CharField(primary_key=True, max_length=32)
-#     name = models.CharField(unique=True, max_length=50)
-#     p1000 = models.SmallIntegerField()
-#     p1 = models.SmallIntegerField()
-#     p11 = models.SmallIntegerField()
-#     p21 = models.SmallIntegerField()
-#     p41 = models.SmallIntegerField()
-#     p42 = models.SmallIntegerField()
-#     p51 = models.SmallIntegerField()
-#     p52 = models.SmallIntegerField()
-#     p53 = models.SmallIntegerField()
-#     p54 = models.SmallIntegerField()
-#     p61 = models.SmallIntegerField()
-#     p71 = models.SmallIntegerField()
-#     p81 = models.SmallIntegerField()
-#     p91 = models.SmallIntegerField()
-#     p92 = models.SmallIntegerField()
-#     p93 = models.SmallIntegerField()
-#     p94 = models.SmallIntegerField()
-#     p95 = models.SmallIntegerField()
-#     p100 = models.SmallIntegerField()
-#     p101 = models.SmallIntegerField()
-#     p102 = models.SmallIntegerField()
-#     p103 = models.SmallIntegerField()
-#     p111 = models.SmallIntegerField()
-#     p112 = models.SmallIntegerField()
-#     p121 = models.SmallIntegerField()
-#     p122 = models.SmallIntegerField()
-#     p123 = models.SmallIntegerField()
-#     p2001 = models.SmallIntegerField()
-#     p2002 = models.SmallIntegerField()
-#     p2003 = models.SmallIntegerField()
-#     p2005 = models.SmallIntegerField()
-#     p2006 = models.SmallIntegerField()
-#     p2007 = models.SmallIntegerField()
-#     p2008 = models.SmallIntegerField()
-#     p2009 = models.SmallIntegerField()
-#     p2010 = models.SmallIntegerField()
-#     p2011 = models.SmallIntegerField()
-#     p2012 = models.SmallIntegerField()
-#     p2013 = models.SmallIntegerField()
-#     p2014 = models.SmallIntegerField()
-#     p2015 = models.SmallIntegerField()
-#     p2016 = models.SmallIntegerField()
-#     p2017 = models.SmallIntegerField()
-#     p2018 = models.SmallIntegerField()
-#     p2019 = models.SmallIntegerField()
-#     p2020 = models.SmallIntegerField()
-#     p2021 = models.SmallIntegerField()
-#     p2022 = models.SmallIntegerField()
-#     p2023 = models.SmallIntegerField()
-#     p2024 = models.SmallIntegerField()
-#     p2025 = models.SmallIntegerField()
-#     p2026 = models.SmallIntegerField()
-#     p2027 = models.SmallIntegerField()
-#     p2028 = models.SmallIntegerField()
-#     p2029 = models.SmallIntegerField()
-#     p3000 = models.SmallIntegerField()
-#     p4000 = models.SmallIntegerField()
-#     p5000 = models.SmallIntegerField()
-#     p6000 = models.SmallIntegerField()
-#     p6001 = models.SmallIntegerField()
-#     p7000 = models.SmallIntegerField()
-#     p8000 = models.SmallIntegerField()
-#     p8001 = models.SmallIntegerField()
-#     p9000 = models.SmallIntegerField()
-#     p10000 = models.SmallIntegerField()
-#     p11000 = models.SmallIntegerField()
-#     p12000 = models.SmallIntegerField()
-#     p13000 = models.SmallIntegerField()
-#     p14000 = models.SmallIntegerField()
-#     p15000 = models.SmallIntegerField()
-#     p16000 = models.SmallIntegerField()
-#     p17000 = models.SmallIntegerField()
-#     p18000 = models.SmallIntegerField()
-#     p19000 = models.SmallIntegerField()
-#     p20000 = models.SmallIntegerField()
-#     p21000 = models.SmallIntegerField()
-#     p22000 = models.SmallIntegerField()
-#     p23000 = models.SmallIntegerField()
-#     p25000 = models.SmallIntegerField()
-#     p26000 = models.SmallIntegerField()
-#     p27000 = models.SmallIntegerField()
-#     p28000 = models.SmallIntegerField()
-#     p29000 = models.SmallIntegerField()
-#     p30000 = models.SmallIntegerField()
-#     p31000 = models.SmallIntegerField()
-#     p40000 = models.SmallIntegerField()
-#     p41000 = models.SmallIntegerField()
-#     p42000 = models.SmallIntegerField()
-#     p43000 = models.SmallIntegerField()
-#     p44000 = models.SmallIntegerField()
+class Profile(models.Model):
+    uid = models.CharField(primary_key=True, max_length=32)
+    name = models.CharField(unique=True, max_length=50)
+    p1000 = models.SmallIntegerField()
+    p1 = models.SmallIntegerField()
+    p11 = models.SmallIntegerField()
+    p21 = models.SmallIntegerField()
+    p41 = models.SmallIntegerField()
+    p42 = models.SmallIntegerField()
+    p51 = models.SmallIntegerField()
+    p52 = models.SmallIntegerField()
+    p53 = models.SmallIntegerField()
+    p54 = models.SmallIntegerField()
+    p61 = models.SmallIntegerField()
+    p71 = models.SmallIntegerField()
+    p81 = models.SmallIntegerField()
+    p91 = models.SmallIntegerField()
+    p92 = models.SmallIntegerField()
+    p93 = models.SmallIntegerField()
+    p94 = models.SmallIntegerField()
+    p95 = models.SmallIntegerField()
+    p100 = models.SmallIntegerField()
+    p101 = models.SmallIntegerField()
+    p102 = models.SmallIntegerField()
+    p103 = models.SmallIntegerField()
+    p111 = models.SmallIntegerField()
+    p112 = models.SmallIntegerField()
+    p121 = models.SmallIntegerField()
+    p122 = models.SmallIntegerField()
+    p123 = models.SmallIntegerField()
+    p2001 = models.SmallIntegerField()
+    p2002 = models.SmallIntegerField()
+    p2003 = models.SmallIntegerField()
+    p2005 = models.SmallIntegerField()
+    p2006 = models.SmallIntegerField()
+    p2007 = models.SmallIntegerField()
+    p2008 = models.SmallIntegerField()
+    p2009 = models.SmallIntegerField()
+    p2010 = models.SmallIntegerField()
+    p2011 = models.SmallIntegerField()
+    p2012 = models.SmallIntegerField()
+    p2013 = models.SmallIntegerField()
+    p2014 = models.SmallIntegerField()
+    p2015 = models.SmallIntegerField()
+    p2016 = models.SmallIntegerField()
+    p2017 = models.SmallIntegerField()
+    p2018 = models.SmallIntegerField()
+    p2019 = models.SmallIntegerField()
+    p2020 = models.SmallIntegerField()
+    p2021 = models.SmallIntegerField()
+    p2022 = models.SmallIntegerField()
+    p2023 = models.SmallIntegerField()
+    p2024 = models.SmallIntegerField()
+    p2025 = models.SmallIntegerField()
+    p2026 = models.SmallIntegerField()
+    p2027 = models.SmallIntegerField()
+    p2028 = models.SmallIntegerField()
+    p2029 = models.SmallIntegerField()
+    p3000 = models.SmallIntegerField()
+    p4000 = models.SmallIntegerField()
+    p5000 = models.SmallIntegerField()
+    p6000 = models.SmallIntegerField()
+    p6001 = models.SmallIntegerField()
+    p7000 = models.SmallIntegerField()
+    p8000 = models.SmallIntegerField()
+    p8001 = models.SmallIntegerField()
+    p9000 = models.SmallIntegerField()
+    p10000 = models.SmallIntegerField()
+    p11000 = models.SmallIntegerField()
+    p12000 = models.SmallIntegerField()
+    p13000 = models.SmallIntegerField()
+    p14000 = models.SmallIntegerField()
+    p15000 = models.SmallIntegerField()
+    p16000 = models.SmallIntegerField()
+    p17000 = models.SmallIntegerField()
+    p18000 = models.SmallIntegerField()
+    p19000 = models.SmallIntegerField()
+    p20000 = models.SmallIntegerField()
+    p21000 = models.SmallIntegerField()
+    p22000 = models.SmallIntegerField()
+    p23000 = models.SmallIntegerField()
+    p25000 = models.SmallIntegerField()
+    p26000 = models.SmallIntegerField()
+    p27000 = models.SmallIntegerField()
+    p28000 = models.SmallIntegerField()
+    p29000 = models.SmallIntegerField()
+    p30000 = models.SmallIntegerField()
+    p31000 = models.SmallIntegerField()
+    p40000 = models.SmallIntegerField()
+    p41000 = models.SmallIntegerField()
+    p42000 = models.SmallIntegerField()
+    p43000 = models.SmallIntegerField()
+    p44000 = models.SmallIntegerField()
 
-#     class Meta:
-#         managed = False
-#         db_table = 'profile'
+    class Meta:
+        managed = False
+        db_table = 'profile'
 
 
 # class ProfileGadgetLayout(models.Model):
@@ -6365,7 +6380,7 @@ class Merchant(models.Model):
 #     data_info = models.TextField(blank=True, null=True)
 #     sms_message = models.TextField(blank=True, null=True)
 #     phone_number = models.CharField(max_length=255, blank=True, null=True)
-#     sms_type = models.CharField(max_length=-1, blank=True, null=True)
+#     sms_type = models.CharField(max_length=255, blank=True, null=True)
 #     merchant_id = models.IntegerField(blank=True, null=True)
 #     date_created = models.DateField(blank=True, null=True)
 #     date_sent = models.DateTimeField(blank=True, null=True)

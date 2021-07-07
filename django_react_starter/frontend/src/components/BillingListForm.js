@@ -72,6 +72,7 @@ export class BillingListForm extends Component {
             onChange={this.onTarget}
           >
             <option value={-1}>Select Customer</option>
+            <option value={"All"}>All</option>
             {this.state.data1.map((x, y) => (
               <option value={y}>{x.company_name}</option>
             ))}
