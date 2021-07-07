@@ -1,6 +1,35 @@
 import React, { Component } from "react";
 
 export class ResultsTable extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     data1: [],
+  //     selectedchoice: -1,
+  //   };
+  // }
+  async componentDidMount() {
+    const url = "http://127.0.0.1:8000/api/showmerchants";
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState((prevState) => ({
+      data1: data.data,
+      selectedchoice: prevState.selectedchoice,
+    }));
+  }
+
+  mandatetable = () => {
+    const table1 = document.getElementById("mandatetable");
+
+    for (let i = 0; i < data1.length; i++) {
+      let row = `<tr>
+                    <td>${i}</td>
+                    <td>${data1[i].id}</td>
+                </tr>`;
+      table1.innerHTML += row;
+    }
+  };
+
   //function for rendering
   render() {
     if (this.props.buttonStatus === "inactive") return false;
@@ -28,24 +57,6 @@ export class ResultsTable extends Component {
                 <td>random date</td>
                 <td>0000</td>
                 <td>John Doe</td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Company 2</td>
-                <td>1111</td>
-                <td>random date</td>
-                <td>1111</td>
-                <td>Song Li</td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Company 3</td>
-                <td>2222</td>
-                <td>random date</td>
-                <td>2222</td>
-                <td>Mary Jane</td>
                 <td>RM test</td>
               </tr>
             </tbody>

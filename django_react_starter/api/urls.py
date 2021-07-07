@@ -6,4 +6,5 @@ urlpatterns = [
     path('showmerchants', views.show_merchants),
     path('showmandates', views.show_mandates),
     path('showcustomers', views.show_customers),
+    path('showinstantpay', views.show_instantpay),
 ]
