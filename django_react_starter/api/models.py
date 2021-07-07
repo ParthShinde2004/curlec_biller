@@ -561,38 +561,38 @@ class CalculationRule(models.Model):
 #         db_table = 'currency'
 
 
-# class Customer(models.Model):
-#     id_type = models.IntegerField(blank=True, null=True)
-#     id_value = models.CharField(max_length=255, blank=True, null=True)
-#     name = models.CharField(max_length=255, blank=True, null=True)
-#     phone_number = models.CharField(max_length=255, blank=True, null=True)
-#     principal_uid = models.CharField(max_length=255, blank=True, null=True)
-#     id = models.IntegerField(primary_key=True)
+class Customer(models.Model):
+    id_type = models.IntegerField(blank=True, null=True)
+    id_value = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
+    phone_number = models.CharField(max_length=255, blank=True, null=True)
+    principal_uid = models.CharField(max_length=255, blank=True, null=True)
+    id = models.IntegerField(primary_key=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'customer'
-
-
-# class CustomerBankAccount(models.Model):
-#     account_number = models.CharField(max_length=255, blank=True, null=True)
-#     bank = models.ForeignKey(Bank, models.DO_NOTHING, blank=True, null=True)
-#     customer = models.ForeignKey(
-#         Customer, models.DO_NOTHING, blank=True, null=True)
-
-#     class Meta:
-#         managed = False
-#         db_table = 'customer_bank_account'
+    class Meta:
+        managed = False
+        db_table = 'customer'
 
 
-# class CustomerBankAccounts(models.Model):
-#     customer = models.ForeignKey(Customer, models.DO_NOTHING)
-#     bank_accounts = models.OneToOneField(
-#         CustomerBankAccount, models.DO_NOTHING)
+class CustomerBankAccount(models.Model):
+    account_number = models.CharField(max_length=255, blank=True, null=True)
+    bank = models.ForeignKey(Bank, models.DO_NOTHING, blank=True, null=True)
+    customer = models.ForeignKey(
+        Customer, models.DO_NOTHING, blank=True, null=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'customer_bank_accounts'
+    class Meta:
+        managed = False
+        db_table = 'customer_bank_account'
+
+
+class CustomerBankAccounts(models.Model):
+    customer = models.ForeignKey(Customer, models.DO_NOTHING)
+    bank_accounts = models.OneToOneField(
+        CustomerBankAccount, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'customer_bank_accounts'
 
 
 # class DatabaseSchema(models.Model):
