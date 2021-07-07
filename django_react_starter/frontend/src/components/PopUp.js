@@ -7,14 +7,6 @@ export class PopUp extends Component {
     this.state = {
       data1: [],
       selectedchoice: -1,
-      // CASArule: "",
-      // instantpayrule: "",
-      // monthlydashboardfee: "",
-      // monthlycreditcardfee: "",
-      // mandatefee: "",
-      // monthlymandatefee: "",
-      // creditcarddiscount: "",
-      // islive: true,
     };
   }
 
@@ -26,20 +18,13 @@ export class PopUp extends Component {
       data1: data.data,
       selectedchoice: prevState.selectedchoice,
     }));
-
-    // this.setState({ data1: data.data });
-    // console.log(data.data);
-    // console.log(data.data[0]["company_name"]);
   }
 
   onTarget = (e) => {
-    this.setState(
-      (prevState) => ({
-        data1: prevState.data1,
-        selectedchoice: e.target.value,
-      })
-      // () => console.log(this.state.data1[this.state.selectedchoice])
-    );
+    this.setState((prevState) => ({
+      data1: prevState.data1,
+      selectedchoice: e.target.value,
+    }));
   };
 
   render() {
