@@ -5,13 +5,12 @@ export class ResultsTable extends Component {
     super(props);
     this.state = {
       data1: [],
-      // selectedchoice: -1,
     };
   }
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.selectedCompany !== prevProps.selectedCompany) {
       const url = `http://127.0.0.1:8000/api/showmandates?merchant_id=${this.props.selectedCompany}`;
-      const url1 = "http://127.0.0.1:8000/api/showtransactions";
+      const url1 = `http://127.0.0.1:8000/api/showtransactions?merchant_id=${this.props.selectedCompany}`;
       const response = await fetch(url);
       const response1 = await fetch(url1);
       const data = await response.json();
@@ -27,7 +26,6 @@ export class ResultsTable extends Component {
     this.setState((prevState) => ({
       data1: prevState.data1,
       data3: prevState.data3,
-      // selectedchoice: e.target.value,
     }));
   };
 
@@ -48,7 +46,21 @@ export class ResultsTable extends Component {
     );
   };
 
-  renderrow1 = (z, w) => {};
+  renderrow1 = (z, w) => {
+    if (z == null) {
+      return false;
+    }
+    return (
+      <tr>
+        <td>{w + 1}</td>
+        <td>Company</td>
+        <td>{z.merchant_id}</td>
+        <td>{z.date_created}</td>
+        <td>Order Number</td>
+        <td>Value</td>
+      </tr>
+    );
+  };
 
   //function for rendering; map; html <tr>; hard code a few rows first
   render() {
@@ -87,6 +99,11 @@ export class ResultsTable extends Component {
                 <th scope="col">Value</th>
               </tr>
             </thead>
+            <tbody>
+              {this.state.data3.length != 0 && (
+                <>{this.state.data3.map((w, z) => this.renderrow1(w, z))}</>
+              )}
+            </tbody>
           </table>
         )}
         {this.props.transactionType == "Instant Pay (Card)" && (

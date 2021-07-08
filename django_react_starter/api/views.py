@@ -3,9 +3,9 @@ from rest_framework import generics, status
 from .models import (
     CalculationRule,
     Merchant,
-    # MandateInstantPay,
+    MandateInstantPay,
     Mandate,
-    # Customer,
+    Customer,
     MandateTransaction,
 )
 from rest_framework.decorators import api_view, permission_classes
@@ -34,8 +34,13 @@ def show_mandates(request):
 
 
 def show_transactions(request):
-    showall_transactions = list(MandateTransaction.objects.values())
-    return JsonResponse({"data": showall_transactions})
+    showall_transactions = MandateTransaction.objects.all()
+    gettransaction = request.GET.get("merchant_id")
+    if gettransaction != None and gettransaction != "":
+        showall_transactions = showall_transactions.filter(
+            merchant__id=gettransaction)
+    result = list(showall_transactions.values())
+    return JsonResponse({"data": result})
 
 # def show_customers(request):
 #     showall_customers = list(Customer.objects.values())
