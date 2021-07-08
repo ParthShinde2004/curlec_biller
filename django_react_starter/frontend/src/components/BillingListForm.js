@@ -35,6 +35,7 @@ export class BillingListForm extends Component {
 
   buttonfunc = () => {
     this.props.setButton("active");
+    this.props.setCompany(this.state.selectedchoice);
   };
 
   constructor(props) {
@@ -42,7 +43,6 @@ export class BillingListForm extends Component {
     this.state = {
       data1: [],
       selectedchoice: -1,
-      selectedcompany: "asd",
     };
   }
 
@@ -76,7 +76,7 @@ export class BillingListForm extends Component {
             <option value={-1}>Select Customer</option>
             <option value={"All"}>All</option>
             {this.state.data1.map((x, y) => (
-              <option value={y} key={y}>
+              <option value={x.id} key={y}>
                 {x.company_name}
               </option>
             ))}

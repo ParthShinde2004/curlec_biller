@@ -2,44 +2,47 @@ import React, { Component } from "react";
 
 export class ResultsTable extends Component {
   constructor(props) {
-    const clm = [
-      {
-        render: (index) => `${index + 1}`,
-      },
-    ];
     super(props);
-    this.index1 = 1;
     this.state = {
       data1: [],
       // selectedchoice: -1,
     };
   }
-  async componentDidMount() {
-    const url = "http://127.0.0.1:8000/api/showmandates";
-    const url1 = "http://127.0.0.1:8000/api/showtransactions";
-    const url2 = "http://127.0.0.1:8000/api/showmerchants";
-    const response = await fetch(url);
-    const response1 = await fetch(url1);
-    const response2 = await fetch(url2);
-    const data = await response.json();
-    const data2 = await response1.json();
-    const data4 = await response2.json();
-    this.setState((prevState) => ({
-      data1: data.data,
-      data3: data2.data,
-      data5: data4.data,
-      // selectedchoice: prevState.selectedchoice,
-    }));
-    console.log(this.props.selectedcompany);
+  async componentDidUpdate(prevProps, prevState) {
+    if (this.props.selectedCompany !== prevProps.selectedCompany) {
+      console.log("didupdate");
+      const url = `http://127.0.0.1:8000/api/showmandates?merchant_id=${this.props.selectedCompany}`;
+      const url1 = "http://127.0.0.1:8000/api/showtransactions";
+      const response = await fetch(url);
+      const response1 = await fetch(url1);
+      const data = await response.json();
+      const data2 = await response1.json();
+      this.setState((prevState) => ({
+        data1: data.data,
+        data3: data2.data,
+      }));
+    }
   }
 
   onTarget = (e) => {
     this.setState((prevState) => ({
       data1: prevState.data1,
       data3: prevState.data3,
-      data5: prevState.data5,
       // selectedchoice: e.target.value,
     }));
+  };
+
+  renderrow = (x, y) => {
+    if (x == null) {
+      return false;
+    }
+    return (
+      <tr>
+        <td>{y + 1}</td>
+        <td>company</td>
+        <td>{x.reference_number}</td>
+      </tr>
+    );
   };
 
   //function for rendering; map; html <tr>; hard code a few rows first
@@ -61,39 +64,9 @@ export class ResultsTable extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>
-                  {this.state.data5 &&
-                    this.state.data5[0] &&
-                    this.state.data5[0]["company_name"]}
-                </td>
-                <td>
-                  {this.state.data1 &&
-                    this.state.data1[0] &&
-                    this.state.data1[0]["merchant_id"]}
-                </td>
-                <td>
-                  {this.state.data1 &&
-                    this.state.data1[0] &&
-                    this.state.data1[0]["date_created"]}
-                </td>
-                <td>
-                  {this.state.data1 &&
-                    this.state.data1[0] &&
-                    this.state.data1[0]["reference_number"]}
-                </td>
-                <td>
-                  {this.state.data3 &&
-                    this.state.data3[0] &&
-                    this.state.data3[0]["customer_name"]}
-                </td>
-                <td>
-                  {this.state.data3 &&
-                    this.state.data3[0] &&
-                    this.state.data3[0]["amount"]}
-                </td>
-              </tr>
+              {this.state.data1.length != 0 && (
+                <>{this.state.data1.map((x, y) => this.renderrow(x, y))}</>
+              )}
             </tbody>
           </table>
         )}

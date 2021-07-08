@@ -9,12 +9,14 @@ export default class App extends Component {
   state = {
     transactionType: "",
     buttonStatus: "",
+    selectedCompany: "",
   };
 
   constructor(props) {
     super(props);
     this.setType = this.setType.bind(this);
     this.setButton = this.setButton.bind(this);
+    this.setCompany = this.setCompany.bind(this);
   }
 
   setType(userinput) {
@@ -26,6 +28,12 @@ export default class App extends Component {
   setButton(status) {
     this.setState({
       buttonStatus: status,
+    });
+  }
+
+  setCompany(company) {
+    this.setState({
+      selectedCompany: company,
     });
   }
 
@@ -44,7 +52,7 @@ export default class App extends Component {
             <BillingListForm
               setType={this.setType}
               setButton={this.setButton}
-              selectedcompany={this.state.selectedcompany}
+              setCompany={this.setCompany}
             />
           </div>
           <div
@@ -56,6 +64,7 @@ export default class App extends Component {
             <ResultsTable
               transactionType={this.state.transactionType}
               buttonStatus={this.state.buttonStatus}
+              selectedCompany={this.state.selectedCompany}
             />
           </div>
           <div

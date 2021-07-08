@@ -23,8 +23,14 @@ def show_merchants(request):
 
 
 def show_mandates(request):
-    showall_mandates = list(Mandate.objects.values())
-    return JsonResponse({"data": showall_mandates})
+    showall_mandates = Mandate.objects.all()
+    getmerchantid = request.GET.get("merchant_id")
+    if getmerchantid != None and getmerchantid != "":
+        showall_mandates = showall_mandates.filter(merchant__id=getmerchantid)
+    result = list(showall_mandates.values())
+    # showall_mandates = list(Mandate.objects.filter(
+    #     merchant_id=getmerchantid).values())
+    return JsonResponse({"data": result})
 
 
 def show_transactions(request):
