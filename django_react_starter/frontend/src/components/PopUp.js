@@ -60,7 +60,9 @@ export class PopUp extends Component {
           >
             <option value={-1}>Select Customer</option>
             {this.state.data1.map((x, y) => (
-              <option value={y}>{x.company_name}</option>
+              <option value={y} key={y}>
+                {x.company_name}
+              </option>
             ))}
           </select>
           <h6>Calculation Rule - Credit Card:</h6>
@@ -123,13 +125,6 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
-          {/* <h6>Calculation Rule - Monthly Mandate Fee:</h6>
-          <div className="input-group">
-            <textarea
-              className="form-control"
-              aria-label="With textarea"
-            ></textarea>
-          </div> */}
           <h6>Calculation Rule - Mandate Fee:</h6>
           <div className="input-group">
             <a>

@@ -42,6 +42,7 @@ export class BillingListForm extends Component {
     this.state = {
       data1: [],
       selectedchoice: -1,
+      selectedcompany: "asd",
     };
   }
 
@@ -75,7 +76,9 @@ export class BillingListForm extends Component {
             <option value={-1}>Select Customer</option>
             <option value={"All"}>All</option>
             {this.state.data1.map((x, y) => (
-              <option value={y}>{x.company_name}</option>
+              <option value={y} key={y}>
+                {x.company_name}
+              </option>
             ))}
           </select>
           <div className="form-group">

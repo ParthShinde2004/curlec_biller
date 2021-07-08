@@ -44,6 +44,7 @@ export default class App extends Component {
             <BillingListForm
               setType={this.setType}
               setButton={this.setButton}
+              selectedcompany={this.state.selectedcompany}
             />
           </div>
           <div
