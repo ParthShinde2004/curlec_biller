@@ -10,7 +10,6 @@ export class ResultsTable extends Component {
   }
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.selectedCompany !== prevProps.selectedCompany) {
-      console.log("didupdate");
       const url = `http://127.0.0.1:8000/api/showmandates?merchant_id=${this.props.selectedCompany}`;
       const url1 = "http://127.0.0.1:8000/api/showtransactions";
       const response = await fetch(url);
@@ -40,10 +39,16 @@ export class ResultsTable extends Component {
       <tr>
         <td>{y + 1}</td>
         <td>company</td>
+        <td>{x.merchant_id}</td>
+        <td>{x.date_created}</td>
         <td>{x.reference_number}</td>
+        <td>customer</td>
+        <td>value</td>
       </tr>
     );
   };
+
+  renderrow1 = (z, w) => {};
 
   //function for rendering; map; html <tr>; hard code a few rows first
   render() {
@@ -82,32 +87,6 @@ export class ResultsTable extends Component {
                 <th scope="col">Value</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Company 1</td>
-                <td>0000</td>
-                <td>random date</td>
-                <td>CSB-IP-xxxxx</td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Company 2</td>
-                <td>1111</td>
-                <td>random date</td>
-                <td>CSB-IP-xxxxx</td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Company 3</td>
-                <td>2222</td>
-                <td>random date</td>
-                <td>CSB-IP-xxxxx</td>
-                <td>RM test</td>
-              </tr>
-            </tbody>
           </table>
         )}
         {this.props.transactionType == "Instant Pay (Card)" && (
@@ -122,33 +101,6 @@ export class ResultsTable extends Component {
                 <th scope="col">Value</th>
               </tr>
             </thead>
-            <tbody>
-              {/* {{ funnctionName() }} later for when we progrma the function */}
-              <tr>
-                <th scope="row">1</th>
-                <td>Company 1</td>
-                <td>0000</td>
-                <td>random date</td>
-                <td>CSB-IP-xxxxx</td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Company 2</td>
-                <td>1111</td>
-                <td>random date</td>
-                <td>CSB-IP-xxxxx</td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Company 3</td>
-                <td>2222</td>
-                <td>random date</td>
-                <td>CSB-IP-xxxxx</td>
-                <td>RM test</td>
-              </tr>
-            </tbody>
           </table>
         )}
         {this.props.transactionType == "Successful Pay (Bank)" && (
@@ -165,39 +117,6 @@ export class ResultsTable extends Component {
                 <th scope="col">Value</th>
               </tr>
             </thead>
-            <tbody>
-              {/* {{ funnctionName() }} later for when we progrma the function */}
-              <tr>
-                <th scope="row">1</th>
-                <td>Customer 1</td>
-                <td>0000</td>
-                <td>random date</td>
-                <td>0000</td>
-                <td>John Doe</td>
-                <td></td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Company 2</td>
-                <td>1111</td>
-                <td>random date</td>
-                <td>1111</td>
-                <td>Song Li</td>
-                <td>True</td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Company 3</td>
-                <td>2222</td>
-                <td>random date</td>
-                <td>2222</td>
-                <td>Mary Jane</td>
-                <td></td>
-                <td>RM test</td>
-              </tr>
-            </tbody>
           </table>
         )}
         {this.props.transactionType == "Successful Pay (Card)" && (
@@ -214,39 +133,6 @@ export class ResultsTable extends Component {
                 <th scope="col">Value</th>
               </tr>
             </thead>
-            <tbody>
-              {/* {{ funnctionName() }} later for when we progrma the function */}
-              <tr>
-                <th scope="row">1</th>
-                <td>Customer 1</td>
-                <td>0000</td>
-                <td>random date</td>
-                <td>0000</td>
-                <td>John Doe</td>
-                <td>True</td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Company 2</td>
-                <td>1111</td>
-                <td>random date</td>
-                <td>1111</td>
-                <td>Song Li</td>
-                <td>True</td>
-                <td>RM test</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Company 3</td>
-                <td>2222</td>
-                <td>random date</td>
-                <td>2222</td>
-                <td>Mary Jane</td>
-                <td>True</td>
-                <td>RM test</td>
-              </tr>
-            </tbody>
           </table>
         )}
       </div>
@@ -254,12 +140,4 @@ export class ResultsTable extends Component {
   }
 }
 
-const RenderRow = (props) => {
-  return props.keys.map((key, index) => {
-    return <td key={props.data[key]}>{props.data[key]}</td>;
-  });
-};
-
 export default ResultsTable;
-
-// use functions (inside the component) to generate all the rows from backend
