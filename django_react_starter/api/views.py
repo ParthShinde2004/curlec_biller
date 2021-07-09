@@ -28,6 +28,7 @@ def show_mandates(request):
     result = list(showall_mandates.values())
     return JsonResponse({"data": result})
 
+
 # function should get reference number
 # slow api calls
 
