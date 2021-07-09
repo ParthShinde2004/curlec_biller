@@ -4,6 +4,8 @@ import { PopUp } from "./PopUp";
 export class Header extends Component {
   constructor(props) {
     super(props);
+    // the state of the PopUp is set to false and is made true
+    // when 'settings' is pressed on the header
     this.state = { addPopUpShow: false };
   }
 

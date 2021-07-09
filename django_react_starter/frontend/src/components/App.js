@@ -21,24 +21,29 @@ export default class App extends Component {
     this.setRefNo = this.setRefNo.bind(this);
   }
 
+  // used for 'ResultsTable.js' and sets the type (e.g. Mandate, Instant Pay, etc.)
+  // to the variable name
   setType(userinput) {
     this.setState({
       transactionType: userinput,
     });
   }
-
+  // used for 'ResultsTable.js' loading and sets the button status. Changes state when the
+  // 'generate billing list' button is pressed
   setButton(status) {
     this.setState({
       buttonStatus: status,
     });
   }
 
+  // used for 'ResultsTable.js' and assigns the variable with 'merchant_id'
   setCompany(company) {
     this.setState({
       selectedCompany: company,
     });
   }
 
+  // failed attempt at passing 'ReferenceNumber'
   setRefNo(number) {
     this.setState({
       selectedRefNo: number,
@@ -57,6 +62,7 @@ export default class App extends Component {
               padding: 20,
             }}
           >
+            {/* The billing list changes the states that are passed to results table. Add more when you create new APIs for succesful pay */}
             <BillingListForm
               setType={this.setType}
               setButton={this.setButton}
@@ -70,6 +76,7 @@ export default class App extends Component {
               padding: 10,
             }}
           >
+            {/* The result table takes in all the states to generate all the tables. Add more when you create new APIs for succesful pay  */}
             <ResultsTable
               transactionType={this.state.transactionType}
               buttonStatus={this.state.buttonStatus}

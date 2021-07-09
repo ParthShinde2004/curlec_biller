@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ExportJsonExcel from "js-export-excel";
 
 export class InvoiceForm extends Component {
   constructor(props) {
@@ -17,7 +16,6 @@ export class InvoiceForm extends Component {
       data1: data.data,
     }));
   }
-
   livemerchants = () => {
     console.log(this.state.data1);
   };

@@ -10,6 +10,7 @@ export class PopUp extends Component {
     };
   }
 
+  // showcalculations API is fetched
   async componentDidMount() {
     const url = "http://127.0.0.1:8000/api/showcalculations";
     const response = await fetch(url);
@@ -20,6 +21,7 @@ export class PopUp extends Component {
     }));
   }
 
+  // sets the selectedchoice state to the value of the dropdown
   onTarget = (e) => {
     this.setState((prevState) => ({
       data1: prevState.data1,
@@ -56,8 +58,10 @@ export class PopUp extends Component {
           <select
             className="form-control"
             aria-label=".form-select-sm example"
+            //the state of selectedchoice stores the customer we clicked on
             onChange={this.onTarget}
           >
+            {/* maps all the customers from the database */}
             <option value={-1}>Select Customer</option>
             {this.state.data1.map((x, y) => (
               <option value={y} key={y}>
@@ -65,6 +69,7 @@ export class PopUp extends Component {
               </option>
             ))}
           </select>
+          {/* Generates all the calculation data from the DB when it's chosen */}
           <h5>Calculation Rule - Credit Card:</h5>
           <div className="input-group">
             <a>
@@ -145,6 +150,7 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
+          {/* Currently not working. Check to do list */}
           <h5>Is Live</h5>
           <select className="form-control" aria-label=".form-select-sm example">
             <option defaultValue>Yes</option>
@@ -163,5 +169,6 @@ export default PopUp;
 
 // to do list:
 // 1. aesthetics of the box (margin with each calculation rule)
-// 2. functionality of the save button; make sure to update back-end db
+// 2. make the calculation data editable
+// 2. functionality of the save button; make sure to update back-end db when calculation data is changed
 // 3. display the correct status for 'Is Live' (currently not working)

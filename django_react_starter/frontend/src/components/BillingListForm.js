@@ -7,6 +7,7 @@ export class BillingListForm extends Component {
     buttonactivated: false,
   };
 
+  // first function used to check if 'Export to Zip' needs to be disabled
   handle_customerChange = (e) => {
     if (e.target.value !== "All") {
       this.setState({
@@ -19,6 +20,7 @@ export class BillingListForm extends Component {
     }
   };
 
+  // second function used to check if 'Export to Zip' needs to be disabled
   handle_paymentChange = (f) => {
     this.props.setButton("inactive");
     this.props.setType(f.target.value);
@@ -33,6 +35,9 @@ export class BillingListForm extends Component {
     }
   };
 
+  // triggered when 'Get Billing List' is clicked
+  // triggers the function imported form 'App.js'
+  // (the functions activate setState)
   buttonfunc = () => {
     this.props.setButton("active");
     this.props.setCompany(this.state.selectedchoice);
@@ -48,6 +53,7 @@ export class BillingListForm extends Component {
     };
   }
 
+  // function used to fetch API (Merchants table)
   async componentDidMount() {
     const url = "http://127.0.0.1:8000/api/showmerchants";
     const response = await fetch(url);
@@ -59,6 +65,7 @@ export class BillingListForm extends Component {
     }));
   }
 
+  // triggered when 'Select Company' is changed
   onTarget = (e) => {
     this.setState((prevState) => ({
       data1: prevState.data1,
@@ -79,6 +86,7 @@ export class BillingListForm extends Component {
           >
             <option value={-1}>Select Customer</option>
             <option value={"All"}>All</option>
+            {/* mapping function that renders all the company names */}
             {this.state.data1.map((x, y) => (
               <option value={x.id} key={y}>
                 {x.company_name}
@@ -115,6 +123,7 @@ export class BillingListForm extends Component {
               onClick={this.buttonfunc}
             >
               Get Billing List
+              {/* not completed */}
             </button>
           </div>
 
@@ -125,6 +134,7 @@ export class BillingListForm extends Component {
               style={{ minWidth: "205.5px" }}
               disabled={this.state.disabled || this.state.disabled2}
             >
+              {/* has no functionality */}
               Export to Zip
             </button>
             <button
@@ -132,6 +142,7 @@ export class BillingListForm extends Component {
               className="btn btn-outline-primary"
               style={{ minWidth: "205.5px" }}
             >
+              {/* has no functionality */}
               Export to Excel
             </button>
           </div>
