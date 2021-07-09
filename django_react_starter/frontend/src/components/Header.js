@@ -20,9 +20,6 @@ export class Header extends Component {
             height="auto"
             width="250"
             className="d-inline-block align-text-middle"
-            // style={{
-            //   margin: 10,
-            // }}
           ></img>
           <div
             className="popup-box"
@@ -43,11 +40,5 @@ export class Header extends Component {
     );
   }
 }
-/*
-to do:
-1. make text bigger [DONE]
-2. resize logo? [DONE]
-3. add functionalities to settings button [in progress...]
-4. change background colour of navbar
-*/
+
 export default Header;
