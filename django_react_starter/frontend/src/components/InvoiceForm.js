@@ -15,10 +15,13 @@ export class InvoiceForm extends Component {
     const data = await response.json();
     this.setState((prevState) => ({
       data1: data.data,
-      selectedchoice: prevState.selectedchoice,
-      selectedref: prevState.selectedref, // not passing the correct variable
     }));
   }
+
+  livemerchants = () => {
+    console.log(this.state.data1);
+  };
+
   render() {
     return (
       <div className="card card-body mt-4 mb-4">
@@ -51,6 +54,7 @@ export class InvoiceForm extends Component {
                 type="button"
                 className="btn btn-outline-primary mr-2"
                 style={{ minWidth: "205.5px" }}
+                onClick={this.livemerchants}
               >
                 Live Merchants
               </button>
