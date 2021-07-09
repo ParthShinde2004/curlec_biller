@@ -1,0 +1,9 @@
+Python (version 3.9.5) Packages used:
+- django: 3.2.5
+- djangorestframework: 3.12.4
+- django-cors-headers: 3.7.0
+- sqlparse: 0.4.1 (#required by Django)
+- pytz: 2021.1 (#required by Django)
+- asgiref: 3.4.1 (#required by Django)
+- pipenv: 2021.5.29
+- virtualenv: 20.4.7
