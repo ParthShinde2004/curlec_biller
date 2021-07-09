@@ -1,6 +1,24 @@
 import React, { Component } from "react";
+import ExportJsonExcel from "js-export-excel";
 
 export class InvoiceForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data1: [],
+    };
+  }
+
+  async componentDidMount() {
+    const url = "http://127.0.0.1:8000/api/showmerchants";
+    const response = await fetch(url);
+    const data = await response.json();
+    this.setState((prevState) => ({
+      data1: data.data,
+      selectedchoice: prevState.selectedchoice,
+      selectedref: prevState.selectedref, // not passing the correct variable
+    }));
+  }
   render() {
     return (
       <div className="card card-body mt-4 mb-4">
