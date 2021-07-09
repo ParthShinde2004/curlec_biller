@@ -36,6 +36,7 @@ export class BillingListForm extends Component {
   buttonfunc = () => {
     this.props.setButton("active");
     this.props.setCompany(this.state.selectedchoice);
+    this.props.setRefNo(this.state.selectedref);
   };
 
   constructor(props) {
@@ -43,6 +44,7 @@ export class BillingListForm extends Component {
     this.state = {
       data1: [],
       selectedchoice: -1,
+      selectedref: -1,
     };
   }
 
@@ -53,6 +55,7 @@ export class BillingListForm extends Component {
     this.setState((prevState) => ({
       data1: data.data,
       selectedchoice: prevState.selectedchoice,
+      selectedref: prevState.selectedref,
     }));
   }
 
@@ -60,6 +63,7 @@ export class BillingListForm extends Component {
     this.setState((prevState) => ({
       data1: prevState.data1,
       selectedchoice: e.target.value,
+      selectedref: prevState.selectedref,
     }));
   };
 
