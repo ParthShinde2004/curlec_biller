@@ -36,7 +36,7 @@ def show_transactions(request):
     gettransaction = request.GET.get("reference_number")
     if gettransaction != None and gettransaction != "":
         showall_transactions = showall_transactions.filter(
-            reference__number=gettransaction)
+            reference_number=gettransaction)
     result = list(showall_transactions.values())
     return JsonResponse({"data": result})
 

@@ -52,7 +52,7 @@ export class PopUp extends Component {
           </button>
         </Modal.Header>
         <Modal.Body>
-          <h6>Customer</h6>
+          <h5>Customer</h5>
           <select
             className="form-control"
             aria-label=".form-select-sm example"
@@ -65,7 +65,7 @@ export class PopUp extends Component {
               </option>
             ))}
           </select>
-          <h6>Calculation Rule - Credit Card:</h6>
+          <h5>Calculation Rule - Credit Card:</h5>
           <div className="input-group">
             <a>
               {this.state.data1 &&
@@ -75,7 +75,7 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
-          <h6>Calculation Rule - CASA:</h6>
+          <h5>Calculation Rule - CASA:</h5>
           <div className="input-group">
             <a>
               {this.state.data1 &&
@@ -85,7 +85,7 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
-          <h6>Calculation Rule - Instant Pay:</h6>
+          <h5>Calculation Rule - Instant Pay:</h5>
           <div className="input-group">
             <a>
               {this.state.data1 &&
@@ -95,7 +95,7 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
-          <h6>Calculation Rule - Monthly Dashboard Fee:</h6>
+          <h5>Calculation Rule - Monthly Dashboard Fee:</h5>
           <div className="input-group">
             <a>
               {this.state.data1 &&
@@ -105,7 +105,7 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
-          <h6>Calculation Rule - Monthly Credit Card Fee:</h6>
+          <h5>Calculation Rule - Monthly Credit Card Fee:</h5>
           <div className="input-group">
             <a>
               {this.state.data1 &&
@@ -115,7 +115,7 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
-          <h6>Calculation Rule - Monthly Minimum Fee:</h6>
+          <h5>Calculation Rule - Monthly Minimum Fee:</h5>
           <div className="input-group">
             <a>
               {this.state.data1 &&
@@ -125,7 +125,7 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
-          <h6>Calculation Rule - Mandate Fee:</h6>
+          <h5>Calculation Rule - Mandate Fee:</h5>
           <div className="input-group">
             <a>
               {this.state.data1 &&
@@ -135,7 +135,7 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
-          <h6>Discount Rate - Credit Card:</h6>
+          <h5>Discount Rate - Credit Card:</h5>
           <div className="input-group">
             <a>
               {this.state.data1 &&
@@ -145,7 +145,7 @@ export class PopUp extends Component {
                 ]}
             </a>
           </div>
-          <h6>Is Live</h6>
+          <h5>Is Live</h5>
           <select className="form-control" aria-label=".form-select-sm example">
             <option defaultValue>Yes</option>
             <option value="1">No</option>
