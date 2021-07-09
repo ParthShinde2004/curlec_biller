@@ -10,6 +10,7 @@ export default class App extends Component {
     transactionType: "",
     buttonStatus: "",
     selectedCompany: "",
+    selectedRefNo: "",
   };
 
   constructor(props) {
@@ -17,6 +18,7 @@ export default class App extends Component {
     this.setType = this.setType.bind(this);
     this.setButton = this.setButton.bind(this);
     this.setCompany = this.setCompany.bind(this);
+    this.setRefNo = this.setRefNo.bind(this);
   }
 
   setType(userinput) {
@@ -34,6 +36,12 @@ export default class App extends Component {
   setCompany(company) {
     this.setState({
       selectedCompany: company,
+    });
+  }
+
+  setRefNo(number) {
+    this.setState({
+      selectedRefNo: number,
     });
   }
 
