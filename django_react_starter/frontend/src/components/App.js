@@ -61,6 +61,7 @@ export default class App extends Component {
               setType={this.setType}
               setButton={this.setButton}
               setCompany={this.setCompany}
+              setRefNo={this.setRefNo}
             />
           </div>
           <div
@@ -73,6 +74,7 @@ export default class App extends Component {
               transactionType={this.state.transactionType}
               buttonStatus={this.state.buttonStatus}
               selectedCompany={this.state.selectedCompany}
+              selectedRefNo={this.state.selectedRefNo}
             />
           </div>
           <div

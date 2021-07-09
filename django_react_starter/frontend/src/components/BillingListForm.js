@@ -65,6 +65,7 @@ export class BillingListForm extends Component {
       selectedchoice: e.target.value,
       selectedref: prevState.selectedref,
     }));
+    console.log(e.target.value);
   };
 
   render() {
