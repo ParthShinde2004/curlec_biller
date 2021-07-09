@@ -15,7 +15,7 @@ export class Header extends Component {
       <nav className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container-fluid">
           <img
-            src="https://cdn.discordapp.com/attachments/775331190093119523/859655405343735808/curlec_new_logo_new_8.png"
+            src="	https://i.imgur.com/jQz37LB.png"
             alt=""
             height="auto"
             width="250"

@@ -10,7 +10,7 @@ export class ResultsTable extends Component {
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.selectedCompany !== prevProps.selectedCompany) {
       const url = `http://127.0.0.1:8000/api/showmandates?merchant_id=${this.props.selectedCompany}`;
-      const url1 = `http://127.0.0.1:8000/api/showtransactions?merchant_id=${this.props.selectedCompany}`;
+      const url1 = `http://127.0.0.1:8000/api/showtransactions?id=${this.props.selectedCompany}`;
       const response = await fetch(url);
       const response1 = await fetch(url1);
       const data = await response.json();
