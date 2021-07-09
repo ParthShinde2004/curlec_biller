@@ -87,13 +87,13 @@ export class PopUp extends Component {
           </div>
           <h5>Calculation Rule - Instant Pay:</h5>
           <div className="input-group">
-            <a>
+            <div>
               {this.state.data1 &&
                 this.state.selectedchoice != -1 &&
                 this.state.data1[this.state.selectedchoice][
                   "calculation_rule_instant_pay"
                 ]}
-            </a>
+            </div>
           </div>
           <h5>Calculation Rule - Monthly Dashboard Fee:</h5>
           <div className="input-group">
@@ -160,3 +160,8 @@ export class PopUp extends Component {
 }
 
 export default PopUp;
+
+// to do list:
+// 1. aesthetics of the box (margin with each calculation rule)
+// 2. functionality of the save button; make sure to update back-end db
+// 3. display the correct status for 'Is Live' (currently not working)
