@@ -158,3 +158,7 @@ export class ResultsTable extends Component {
 }
 
 export default ResultsTable;
+
+// to do:
+// 1. fix specific 'type' (e.g. mandate, instant pay, etc.) render rows
+// 2.
