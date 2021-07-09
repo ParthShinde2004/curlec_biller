@@ -151,3 +151,4 @@ export default BillingListForm;
 // 4. filter resultstable.js with the date
 // 4. fix the bug where when you select specific customer and mandate, it comes up with error
 // 5. fix bug where when you select instant pay it crashes
+// 6. fix the 'selectedref' state

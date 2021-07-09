@@ -54,4 +54,6 @@ export class InvoiceForm extends Component {
 export default InvoiceForm;
 
 // to do:
-// 1.
+// 1. the date 'from' and 'to' has no functionalities; so add functions
+// 2. 'Is Live' is not working
+// 3. add functionalities to 'Live Merchants' and 'Non-Live Merchants'
