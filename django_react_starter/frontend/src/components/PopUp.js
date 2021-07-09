@@ -10,7 +10,7 @@ export class PopUp extends Component {
     };
   }
 
-  // showcalculations API is fetched
+  // API is fetched from 'CalculationRule' table
   async componentDidMount() {
     const url = "http://127.0.0.1:8000/api/showcalculations";
     const response = await fetch(url);

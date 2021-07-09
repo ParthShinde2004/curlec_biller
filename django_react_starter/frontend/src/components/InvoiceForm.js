@@ -8,6 +8,7 @@ export class InvoiceForm extends Component {
     };
   }
 
+  // calls API for 'Merchants' table
   async componentDidMount() {
     const url = "http://127.0.0.1:8000/api/showmerchants";
     const response = await fetch(url);
@@ -16,12 +17,10 @@ export class InvoiceForm extends Component {
       data1: data.data,
     }));
   }
-  livemerchants = () => {
-    console.log(this.state.data1);
-  };
 
   render() {
     return (
+      //buttons had no functionallity
       <div className="card card-body mt-4 mb-4">
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -52,7 +51,6 @@ export class InvoiceForm extends Component {
                 type="button"
                 className="btn btn-outline-primary mr-2"
                 style={{ minWidth: "205.5px" }}
-                onClick={this.livemerchants}
               >
                 Live Merchants
               </button>
