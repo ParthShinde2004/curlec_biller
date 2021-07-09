@@ -4,13 +4,11 @@ import { PopUp } from "./PopUp";
 export class Header extends Component {
   constructor(props) {
     super(props);
-
     this.state = { addPopUpShow: false };
   }
 
   render() {
     let addPopUpShow = () => this.setState({ addPopUpShow: false });
-
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-primary">
         <div className="container-fluid">
@@ -42,3 +40,6 @@ export class Header extends Component {
 }
 
 export default Header;
+
+// to do:
+// 1. none!

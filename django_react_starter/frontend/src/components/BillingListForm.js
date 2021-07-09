@@ -145,3 +145,9 @@ export class BillingListForm extends Component {
 export default BillingListForm;
 
 // to do:
+// 1. finish off the "mandate" type with each company; the columns 'company name', 'customer' and 'value' have not been finished
+// 2. finish off the other types "instant pay" and "successful pay"
+// 3. add functionalities to "export to zip" and "export to excel"
+// 4. filter resultstable.js with the date
+// 4. fix the bug where when you select specific customer and mandate, it comes up with error
+// 5. fix bug where when you select instant pay it crashes
