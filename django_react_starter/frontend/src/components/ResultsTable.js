@@ -106,10 +106,10 @@ export class ResultsTable extends Component {
               </tr>
             </thead>
             <tbody>
+              {/* error in this render function (for this conditional rendering) */}
               {/* {this.state.data3.length != 0 && (
                 <>{this.state.data3.map((w, z) => this.renderrow_instantpaybank(w, z))}</>
               )} */}
-              {/* error in this render function (for this conditional rendering) */}
             </tbody>
           </table>
         )}
@@ -167,6 +167,6 @@ export class ResultsTable extends Component {
 export default ResultsTable;
 
 // to do:
-// 1. fix specific 'type' (e.g. mandate, instant pay, etc.) render rows
-// 2. API loading speed
-// 3. loading status (or any thing to represent loading) while API is being fetched
+// 1. fix specific 'type' (e.g. mandate, instant pay, etc.) render rows [x]
+// 2. API loading speed [x]
+// 3. loading status (or any thing to represent loading) while API is being fetched [x]

@@ -72,8 +72,8 @@ export class InvoiceForm extends Component {
 export default InvoiceForm;
 
 // to do:
-// 1. the date 'from' and 'to' has no functionalities; so add functions
-// 2. 'Is Live' is not working
-// 3. add functionalities to 'Live Merchants' and 'Non-Live Merchants' buttons
-// 4. add functionalities to 'Generate Invoice' button
-// 5. loading status (or any thing to represent loading) while API is being fetched and files are being downloaded/formed from buttons
+// 1. the date 'from' and 'to' has no functionalities; so add functions [x]
+// 2. 'Is Live' is not working [x]
+// 3. add functionalities to 'Live Merchants' and 'Non-Live Merchants' buttons [x]
+// 4. add functionalities to 'Generate Invoice' button [x]
+// 5. loading status (or any thing to represent loading) while API is being fetched and files are being downloaded/formed from buttons [x]

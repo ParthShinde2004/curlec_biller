@@ -155,13 +155,13 @@ export class BillingListForm extends Component {
 export default BillingListForm;
 
 // to do:
-// 1. finish off the "mandate" type with each company; the columns 'company name', 'customer' and 'value' have not been finished
-// 2. finish off the other types "instant pay" and "successful pay"
-// 3. add functionalities to "export to zip" and "export to excel"
-// 4. filter resultstable.js with the date
-// 5. fix bug where when you select instant pay it crashes
-// 6. fix the 'selectedref' state
-// 7. the 'export to zip' button should be disabled when a customer (==! All) is chosen
-// 8. 'merchant_id = all' doesnt work
-// 9. 'invoiceform.js' is being pushed down after table is generated
-// 10. loading status (or any thing to represent loading) while API is being fetched and files are being downloaded/formed from export buttons
+// 1. finish off the "mandate" type with each company; the columns 'company name', 'customer' and 'value' have not been finished [x]
+// 2. finish off the other types "instant pay" and "successful pay" [x]
+// 3. add functionalities to "export to zip" and "export to excel" [x]
+// 4. filter resultstable.js with the date [x]
+// 5. fix bug where when you select instant pay it crashes [x]
+// 6. fix the 'selectedref' state [x]
+// 7. the 'export to zip' button should be disabled when a customer (==! All) is chosen [x]
+// 8. 'merchant_id = all' doesnt work [x]
+// 9. 'invoiceform.js' is being pushed down after table is generated [x]
+// 10. loading status (or any thing to represent loading) while API is being fetched and files are being downloaded/formed from export buttons [x]

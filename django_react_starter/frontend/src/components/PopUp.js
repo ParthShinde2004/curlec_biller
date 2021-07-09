@@ -167,8 +167,8 @@ export class PopUp extends Component {
 
 export default PopUp;
 
-// to do list:
-// 1. aesthetics of the box (margin with each calculation rule)
-// 2. make the calculation data editable
-// 2. functionality of the save button; make sure to update back-end db when calculation data is changed
-// 3. display the correct status for 'Is Live' (currently not working)
+// to do:
+// 1. aesthetics of the box (margin with each calculation rule) [x]
+// 2. make the calculation data editable [x]
+// 2. functionality of the save button; make sure to update back-end db when calculation data is changed [x]
+// 3. display the correct status for 'Is Live' (currently not working) [x]
