@@ -7,6 +7,8 @@ export class ResultsTable extends Component {
       data1: [],
     };
   }
+
+  // component to load the APIs
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.selectedCompany !== prevProps.selectedCompany) {
       const url = `http://127.0.0.1:8000/api/showmandates?merchant_id=${this.props.selectedCompany}`;
@@ -29,24 +31,26 @@ export class ResultsTable extends Component {
     }));
   };
 
-  renderrow = (x, y) => {
+  renderrow_mandate = (x, y) => {
     if (x == null) {
       return false;
     }
     return (
       <tr>
-        <td>{y + 1}</td>
+        <td key={y + 1}>{y + 1}</td>
+        {/* change the company  */}
         <td>company</td>
-        <td>{x.merchant_id}</td>
-        <td>{x.date_created}</td>
-        <td>{x.reference_number}</td>
+        <td key={x.merchant_id}>{x.merchant_id}</td>
+        <td key={x.date_created}>{x.date_created}</td>
+        <td key={x.reference_number}>{x.reference_number}</td>
+        {/* add customer and value from a different table */}
         <td>customer</td>
         <td>value</td>
       </tr>
     );
   };
 
-  renderrow1 = (z, w) => {
+  renderrow_instantpaybank = (z, w) => {
     if (z == null) {
       return false;
     }
@@ -62,7 +66,7 @@ export class ResultsTable extends Component {
     );
   };
 
-  //function for rendering; map; html <tr>; hard code a few rows first
+  //function for rendering; map; html <tr>
   render() {
     if (this.props.buttonStatus === "inactive") return false;
     return (
@@ -82,7 +86,9 @@ export class ResultsTable extends Component {
             </thead>
             <tbody>
               {this.state.data1.length != 0 && (
-                <>{this.state.data1.map((x, y) => this.renderrow(x, y))}</>
+                <>
+                  {this.state.data1.map((x, y) => this.renderrow_mandate(x, y))}
+                </>
               )}
             </tbody>
           </table>
@@ -100,9 +106,10 @@ export class ResultsTable extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.data3.length != 0 && (
-                <>{this.state.data3.map((w, z) => this.renderrow1(w, z))}</>
-              )}
+              {/* {this.state.data3.length != 0 && (
+                <>{this.state.data3.map((w, z) => this.renderrow_instantpaybank(w, z))}</>
+              )} */}
+              {/* error in this render function (for this conditional rendering) */}
             </tbody>
           </table>
         )}
@@ -161,4 +168,5 @@ export default ResultsTable;
 
 // to do:
 // 1. fix specific 'type' (e.g. mandate, instant pay, etc.) render rows
-// 2. api loading speed
+// 2. API loading speed
+// 3. loading status (or any thing to represent loading) while API is being fetched

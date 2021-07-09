@@ -28,8 +28,11 @@ def show_mandates(request):
     result = list(showall_mandates.values())
     return JsonResponse({"data": result})
 
+# function should get reference number
+# slow api calls
 
-def show_transactions(request):
+
+def show_transactions(request):  # not working function!
     showall_transactions = MandateTransaction.objects.all()
     gettransaction = request.GET.get("reference_number")
     if gettransaction != None and gettransaction != "":

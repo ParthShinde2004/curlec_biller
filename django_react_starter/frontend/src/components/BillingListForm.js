@@ -55,7 +55,7 @@ export class BillingListForm extends Component {
     this.setState((prevState) => ({
       data1: data.data,
       selectedchoice: prevState.selectedchoice,
-      selectedref: prevState.selectedref,
+      selectedref: prevState.selectedref, // not passing the correct variable
     }));
   }
 
@@ -63,9 +63,8 @@ export class BillingListForm extends Component {
     this.setState((prevState) => ({
       data1: prevState.data1,
       selectedchoice: e.target.value,
-      selectedref: prevState.selectedref,
+      selectedref: prevState.selectedref, // not passing the correct variable
     }));
-    console.log(e.target.value);
   };
 
   render() {
@@ -149,7 +148,9 @@ export default BillingListForm;
 // 2. finish off the other types "instant pay" and "successful pay"
 // 3. add functionalities to "export to zip" and "export to excel"
 // 4. filter resultstable.js with the date
-// 4. fix the bug where when you select specific customer and mandate, it comes up with error
 // 5. fix bug where when you select instant pay it crashes
 // 6. fix the 'selectedref' state
 // 7. the 'export to zip' button should be disabled when a customer (==! All) is chosen
+// 8. 'merchant_id = all' doesnt work
+// 9. 'invoiceform.js' is being pushed down after table is generated
+// 10. loading status (or any thing to represent loading) while API is being fetched and files are being downloaded/formed from export buttons

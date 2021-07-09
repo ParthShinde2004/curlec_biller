@@ -8,6 +8,7 @@ export class Header extends Component {
   }
 
   render() {
+    //state to hide and show the modal: PopUp.js
     let addPopUpShow = () => this.setState({ addPopUpShow: false });
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-primary">
@@ -31,6 +32,7 @@ export class Header extends Component {
             >
               Settings
             </button>
+            {/* PopUp is called when the settings button is pressed */}
             <PopUp show={this.state.addPopUpShow} onHide={addPopUpShow} />
           </div>
         </div>
