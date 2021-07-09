@@ -9,7 +9,7 @@ To start the server and run the webapp. Go to terminal and run commands:
 3. cd **..**
 4. **py manage.py runserver**
 
-The developement server will start at port 8000 and needs to be refreshed to show changes made in the code. Ctrl + 5 if changes aren't showing even after refresh.
+The developement server will start at port 8000 and needs to be refreshed to show changes made in the code. Ctrl + F5 if changes aren't showing even after refresh.
 
 Bootstrap was used to speed up development. The bootstrap css has been imported to django_react_starter\frontend\static\css\main.css so if you need to style anything edit that file (there is no need to edit the actual bootstrap files in the node_modules).
 
