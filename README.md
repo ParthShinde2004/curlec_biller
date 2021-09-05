@@ -33,4 +33,4 @@ To start the server and run the webapp. Go to terminal and run commands:
 
 ---
 
-Feel free to clean up any bad code/bad practices as this webapp was coded by two 17-year-old high school students :)
+Feel free to clean up any bad code/bad practices as this webapp was coded by 17-year-old high school students :)
