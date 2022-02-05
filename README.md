@@ -1,7 +1,7 @@
 # Curlec Biller
 
 > A project developed and programmed by rookie 17 year old interns! Worked on from 23rd June → 9th July 2021.
-> <a href="https://www.youtube.com/watch?v=dv_911ZRI2Q">Link to Demo Video</a> 
+> <a href="https://youtu.be/6-Stt057b1s">Link to Demo Video</a> 
 
 ---
 
